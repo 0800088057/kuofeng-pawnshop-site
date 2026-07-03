@@ -244,7 +244,10 @@ export default function HomePage() {
 
       <section className="modern-contact modern-page">
         <div className="modern-contact__info">
-          <Image src="/assets/legacy-web02/footer-qr-mascot.png" alt="國豐當舖 LINE QR Code 與吉祥物" width={280} height={118} />
+          <a href={siteConfig.lineUrl} className="modern-contact__line-qr" aria-label={`加入國豐當舖 LINE ${siteConfig.lineId}`}>
+            <Image src={siteConfig.lineQrImage} alt={`國豐當舖 LINE 官方帳號 ${siteConfig.lineId} QR Code`} width={240} height={240} />
+            <span>LINE {siteConfig.lineId}</span>
+          </a>
           <div>
             <p>
               <MapPin className="h-5 w-5" />

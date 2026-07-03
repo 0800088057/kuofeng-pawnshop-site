@@ -664,6 +664,20 @@ main {
   height: auto;
 }
 
+.modern-contact__line-qr {
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  color: var(--kf-deep);
+  font-weight: 900;
+}
+
+.modern-contact__line-qr img {
+  width: min(100%, 210px);
+  border-radius: 8px;
+  background: #fff;
+}
+
 .modern-contact__info p {
   display: flex;
   align-items: flex-start;
@@ -791,7 +805,7 @@ main {
   }
 
   .modern-contact__info img {
-    width: 260px;
+    width: 220px;
   }
 }
 
