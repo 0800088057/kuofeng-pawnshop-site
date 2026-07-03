@@ -7,19 +7,19 @@ import { siteConfig } from "@/data/site";
 const homeServices = [
   {
     title: "工商融資",
-    desc: "公司、工廠、商號與機械設備需求，可先來電說明狀況，由專人協助評估。",
+    desc: "依營業狀況、資產條件與週轉需求協助初步評估，實際方案以現場說明與契約為準。",
     image: "/assets/legacy-web02/i09.png",
     href: "/services/business-financing",
   },
   {
     title: "汽車借款",
-    desc: "汽車、機車與營業用車皆可先詢問，條件依車況、權屬與契約為準。",
+    desc: "可依車況、車齡、權屬與使用需求進行評估，條件與額度以實際鑑價及契約為準。",
     image: "/assets/legacy-web02/i03.png",
     href: "/services/car-loan",
   },
   {
-    title: "支票借款",
-    desc: "票據週轉與短期資金需求，依票據狀況與實際條件協助評估。",
+    title: "支票貼現",
+    desc: "協助了解票據貼現與短期週轉方式，申辦條件、費用與撥款時程以實際評估為準。",
     image: "/assets/legacy-web02/i20.png",
     href: "/services/check-loan",
   },
@@ -30,16 +30,16 @@ const homeServices = [
     href: "/services/second-mortgage",
   },
   {
-    title: "房屋代償",
-    desc: "既有借款壓力較大時，可先評估是否有調整與代償空間。",
-    image: "/assets/legacy-web02/i13.png",
-    href: "/services/refinance",
-  },
-  {
     title: "萬物質借",
-    desc: "名錶、鑽石、精品、黃金等有價物品，可由專人協助估價。",
+    desc: "可依物品種類、保存狀況與市場價值進行估價，保管、利息與費用依規定及契約辦理。",
     image: "/assets/legacy-web02/i24.png",
     href: "/services/item-pawn",
+  },
+  {
+    title: "代償諮詢",
+    desc: "針對既有借款與還款壓力提供初步諮詢，是否適合代償仍需依條件與契約評估。",
+    image: "/assets/legacy-web02/i13.png",
+    href: "/services/refinance",
   },
 ];
 
@@ -111,14 +111,12 @@ export default function HomePage() {
           <h2>我們服務的項目</h2>
           <span>依實際條件評估，不使用保證核准或固定額度承諾。</span>
         </div>
-        <div className="modern-service-grid">
+        <div className="legacy-home-service-grid">
           {homeServices.map((service) => (
-            <Link href={service.href} key={service.title} className="modern-service-card">
+            <Link href={service.href} key={service.title} className="legacy-home-service-card">
+              <h3>{service.title}</h3>
               <Image src={service.image} alt={service.title} width={301} height={221} />
-              <div>
-                <h3>{service.title}</h3>
-                <p>{service.desc}</p>
-              </div>
+              <p>{service.desc}</p>
             </Link>
           ))}
         </div>

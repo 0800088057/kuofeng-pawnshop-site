@@ -13,7 +13,6 @@ export const siteConfig = {
 
 export const navigation = [
   { label: "首頁", href: "/" },
-  { label: "服務項目", href: "/services" },
   { label: "房屋二胎", href: "/services/second-mortgage" },
   { label: "汽車借款", href: "/services/car-loan" },
   { label: "支票借款", href: "/services/check-loan" },

@@ -276,6 +276,57 @@ main {
   line-height: 1.8;
 }
 
+.legacy-home-service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+}
+
+.legacy-home-service-card {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  overflow: hidden;
+  min-height: 372px;
+  border: 2px solid var(--kf-blue);
+  border-radius: 18px;
+  background: #fff;
+  text-align: center;
+  box-shadow: 0 18px 40px rgba(44, 162, 207, 0.08);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.legacy-home-service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 52px rgba(44, 162, 207, 0.16);
+}
+
+.legacy-home-service-card h3 {
+  margin: 0;
+  background: var(--kf-blue);
+  padding: 18px 18px 20px;
+  color: #fff;
+  font-size: 1.38rem;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.legacy-home-service-card img {
+  align-self: center;
+  width: 205px;
+  height: 155px;
+  margin: 24px auto 12px;
+  object-fit: contain;
+}
+
+.legacy-home-service-card p {
+  margin: 0;
+  padding: 0 28px 30px;
+  color: #777;
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.9;
+}
+
 .modern-principles {
   background: linear-gradient(135deg, #1e91bd, #43b8d8);
   color: #fff;
@@ -688,6 +739,7 @@ main {
 
   .modern-hero__metrics,
   .modern-service-grid,
+  .legacy-home-service-grid,
   .modern-process-grid,
   .modern-quick-visuals__grid,
   .modern-guide__layout,
@@ -703,6 +755,31 @@ main {
   .modern-service-card img {
     width: 92px;
     height: 92px;
+  }
+
+  .legacy-home-service-grid {
+    gap: 20px;
+  }
+
+  .legacy-home-service-card {
+    min-height: 330px;
+    border-radius: 16px;
+  }
+
+  .legacy-home-service-card h3 {
+    padding: 16px;
+    font-size: 1.22rem;
+  }
+
+  .legacy-home-service-card img {
+    width: 178px;
+    height: 132px;
+    margin-top: 20px;
+  }
+
+  .legacy-home-service-card p {
+    padding: 0 22px 24px;
+    font-size: 0.95rem;
   }
 
   .modern-charity__cards {
