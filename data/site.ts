@@ -19,6 +19,7 @@ export const navigation = [
   { label: "汽車借款", href: "/services/car-loan" },
   { label: "支票借款", href: "/services/check-loan" },
   { label: "工商融資", href: "/services/business-financing" },
+  { label: "代償當舖", href: "/services/refinance" },
   { label: "流程", href: "/process" },
   { label: "常見問題", href: "/faq" },
   { label: "聯絡我們", href: "/contact" },
@@ -27,6 +28,6 @@ export const navigation = [
 export const quickLinks = [
   { label: "汽車借款", href: "/services/car-loan" },
   { label: "房屋二胎", href: "/services/second-mortgage" },
-  { label: "支票貼現", href: "/services/check-loan" },
+  { label: "支票借款", href: "/services/check-loan" },
   { label: "工商融資", href: "/services/business-financing" },
 ];

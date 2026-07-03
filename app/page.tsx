@@ -18,7 +18,7 @@ const homeServices = [
     href: "/services/car-loan",
   },
   {
-    title: "支票貼現",
+    title: "支票借款",
     desc: "協助了解票據貼現與短期週轉方式，申辦條件、費用與撥款時程以實際評估為準。",
     image: "/assets/legacy-web02/i20.png",
     href: "/services/check-loan",
@@ -36,7 +36,7 @@ const homeServices = [
     href: "/services/item-pawn",
   },
   {
-    title: "代償諮詢",
+    title: "代償當舖",
     desc: "針對既有借款與還款壓力提供初步諮詢，是否適合代償仍需依條件與契約評估。",
     image: "/assets/legacy-web02/i13.png",
     href: "/services/refinance",

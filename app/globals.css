@@ -1364,6 +1364,14 @@ main {
   font-weight: 900;
 }
 
+.legacy-info-panel__subtitle {
+  margin: 18px 24px 0;
+  color: #2ca2cf;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 900;
+}
+
 .legacy-info-panel ul,
 .legacy-interest ul {
   margin: 0;
@@ -1405,6 +1413,10 @@ main {
   overflow: hidden;
 }
 
+.legacy-interest--wide {
+  align-items: end;
+}
+
 .legacy-interest h2 {
   margin: 0;
   background: #2ca2cf;
@@ -1413,6 +1425,10 @@ main {
   text-align: center;
   font-size: 1.45rem;
   font-weight: 900;
+}
+
+.legacy-interest__subhead {
+  margin-top: 10px !important;
 }
 
 .legacy-interest img {

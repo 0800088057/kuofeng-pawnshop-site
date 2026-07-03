@@ -70,22 +70,23 @@ export default async function ServicePage({ params }: PageProps) {
           </div>
 
           <div className="legacy-detail-grid">
-            <InfoPanel title="適合先諮詢的情境" items={service.situations} />
-            <InfoPanel
-              title="評估前提醒"
-              items={[
-                "網站資訊僅供服務介紹，不能視為承作或額度保證。",
-                "利息、費用、保管、還款方式與期限，請以現場說明及契約為準。",
-                "若不確定資料是否齊全，可先來電確認，避免白跑一趟。",
-              ]}
-            />
+            <InfoPanel title="申辦對象" items={legacy.applicants} />
+            {"extraPanels" in legacy && legacy.extraPanels
+              ? legacy.extraPanels.map((panel) => <InfoPanel key={panel.title} title={panel.title} subtitle={panel.subtitle} items={panel.items} />)
+              : null}
           </div>
 
-          <section className="legacy-interest">
+          <section className="legacy-interest legacy-interest--wide">
             <div>
-              <h2>產品特色</h2>
+              <h2>利息計算方式</h2>
               <ul>
                 {legacy.interest.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+              <h2 className="legacy-interest__subhead">其他備註</h2>
+              <ul>
+                {legacy.notes.map((item) => (
                   <li key={item}>{item}</li>
                 ))}
               </ul>
@@ -98,7 +99,7 @@ export default async function ServicePage({ params }: PageProps) {
             <p>請先來電或留下資料，國豐當舖會依您的實際條件說明可評估方向。實際額度、利息、費用與結果以現場評估及契約為準。</p>
             <div>
               <Link href="/contact">線上諮詢</Link>
-              <Link href="/services">回服務項目</Link>
+              <Link href="/">回首頁</Link>
             </div>
           </div>
         </div>
@@ -107,10 +108,11 @@ export default async function ServicePage({ params }: PageProps) {
   );
 }
 
-function InfoPanel({ title, items }: { title: string; items: string[] }) {
+function InfoPanel({ title, subtitle, items }: { title: string; subtitle?: string; items: string[] }) {
   return (
     <article className="legacy-info-panel">
       <h2>{title}</h2>
+      {subtitle ? <p className="legacy-info-panel__subtitle">{subtitle}</p> : null}
       <ul>
         {items.map((item) => (
           <li key={item}>{item}</li>
