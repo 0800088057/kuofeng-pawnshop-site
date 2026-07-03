@@ -85,7 +85,7 @@ main {
   min-height: 680px;
   background:
     linear-gradient(90deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.08) 48%, rgba(255, 255, 255, 0) 100%),
-    url("/assets/ui/kf-hero-banner.svg") center top / cover no-repeat;
+    url("/assets/ui/kf-hero-banner.png") center top / cover no-repeat;
 }
 
 .modern-hero::after {
