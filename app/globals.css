@@ -84,9 +84,8 @@ main {
   overflow: hidden;
   min-height: 680px;
   background:
-    radial-gradient(circle at 82% 36%, rgba(44, 162, 207, 0.34) 0%, rgba(44, 162, 207, 0.16) 26%, transparent 48%),
-    linear-gradient(110deg, rgba(255, 255, 255, 0.96) 0%, rgba(244, 252, 255, 0.92) 46%, rgba(64, 184, 216, 0.48) 100%),
-    linear-gradient(180deg, #eefbff 0%, #dff5fb 52%, #ffffff 100%);
+    linear-gradient(90deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.08) 48%, rgba(255, 255, 255, 0) 100%),
+    url("/assets/ui/kf-hero-banner.svg") center top / cover no-repeat;
 }
 
 .modern-hero::after {
