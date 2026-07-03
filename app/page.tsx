@@ -147,7 +147,7 @@ export default function HomePage() {
 
       <section className="legacy-contact">
         <div className="legacy-contact__info">
-          <Image src="/assets/legacy-web02/footer-qr-mascot.png" alt="國豐當舖 LINE QR Code 與吉祥物" width={260} height={90} />
+          <Image src="/assets/legacy-web02/footer-qr-mascot.png" alt="國豐當舖 LINE QR Code 與吉祥物" width={280} height={118} />
           <div className="legacy-contact__text">
             <p>
               <span>服務地址：</span>
