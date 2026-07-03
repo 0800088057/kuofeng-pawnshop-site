@@ -60,7 +60,7 @@ main {
 
 .legacy-hero {
   position: relative;
-  min-height: 434px;
+  min-height: 510px;
   overflow: hidden;
   background-color: #43b8d8;
   background-image: url("/assets/legacy-web02/home-hero-blue.png");
@@ -710,8 +710,8 @@ main {
   }
 
   .legacy-hero {
-    min-height: 260px;
-    background-size: auto 260px;
+    min-height: 300px;
+    background-size: auto 300px;
     background-position: 46% top;
   }
 
