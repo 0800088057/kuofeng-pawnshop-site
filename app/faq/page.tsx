@@ -4,7 +4,7 @@ import { createMetadata } from "@/lib/metadata";
 
 export const metadata = createMetadata({
   title: "常見問題",
-  description: "國豐當舖常見問題，包含諮詢、資料、利息費用與 LINE 聯絡方式。",
+  description: "國豐當舖常見問題，包含汽車借款、房屋二胎、支票貼現、應備資料、利息費用與 LINE 聯絡方式。",
   path: "/faq",
 });
 

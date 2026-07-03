@@ -9,6 +9,7 @@ export const services = [
     icon: Building2,
     image: "/assets/old-blue/01-03.png",
     points: ["營運週轉", "店家資金", "短期資金安排"],
+    situations: ["營業收入與支出時間差", "設備、貨物或原料週轉", "短期資金安排與票期銜接"],
     legacy: {
       subtitle: "提供營運週轉與企業短期資金諮詢",
       process: [
@@ -29,6 +30,7 @@ export const services = [
     icon: Car,
     image: "/assets/old-blue/01-07.png",
     points: ["汽車借款", "營業車週轉", "代償降息諮詢"],
+    situations: ["自用車、營業車資金需求", "車輛仍有貸款想先了解方向", "希望依車況評估可討論額度"],
     legacy: {
       subtitle: "汽車、機車與營業車資金需求",
       process: [
@@ -50,6 +52,7 @@ export const services = [
     icon: FileCheck2,
     image: "/assets/old-blue/01-15.png",
     points: ["支票貼現", "票據週轉", "企業短期資金"],
+    situations: ["遠期支票需要提前週轉", "公司或商號短期資金需求", "票據到期日前需先評估可行方向"],
     legacy: {
       subtitle: "票據資金週轉與企業短期需求",
       process: [
@@ -71,6 +74,7 @@ export const services = [
     icon: Home,
     image: "/assets/old-blue/01-09.png",
     points: ["房屋二胎", "房屋代償", "資產活用"],
+    situations: ["名下有房屋且仍有資金需求", "既有房貸外另需週轉", "想了解二胎、增貸或代償方向"],
     legacy: {
       subtitle: "房屋資產活用與二胎資金評估",
       process: [
@@ -92,6 +96,7 @@ export const services = [
     icon: Store,
     image: "/assets/old-blue/01-12.png",
     points: ["有價物品", "典當估價", "短期週轉"],
+    situations: ["名錶、精品、黃金或有價物品估價", "短期資金需求但不確定可否典當", "希望先了解保管與還款方式"],
     legacy: {
       subtitle: "可評估有價物品典當需求",
       process: [
@@ -112,6 +117,7 @@ export const services = [
     icon: Banknote,
     image: "/assets/old-blue/01-18.png",
     points: ["汽車代償", "房屋代償", "還款壓力評估"],
+    situations: ["既有借款利息或月付壓力較大", "想評估汽車或房屋代償方向", "即將到期或流當前想先了解可行方案"],
     legacy: {
       subtitle: "既有借款壓力與整合方向",
       process: [

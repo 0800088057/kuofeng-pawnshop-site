@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Building2, CheckCircle2, Clock3, MapPin, Phone, ShieldCheck } from "lucide-react";
+import { documentChecklist, safetyNotes, scenarioGuides } from "@/data/content";
 import { siteConfig } from "@/data/site";
 
 const homeServices = [
@@ -185,6 +186,42 @@ export default function HomePage() {
         <p>
           實際利息、費用、保管、還款方式與可承作條件，均以現場評估、法令規範與合約內容為準。網站資訊僅供服務介紹。
         </p>
+      </section>
+
+      <section className="modern-guide modern-page">
+        <div className="modern-section-head">
+          <p>Before You Apply</p>
+          <h2>先確認需求，再選適合的服務</h2>
+          <span>把常見情境、應備資料與注意事項整理清楚，來電前就能先判斷方向。</span>
+        </div>
+        <div className="modern-guide__layout">
+          <div className="modern-guide__scenarios">
+            {scenarioGuides.map((item) => (
+              <article key={item.title}>
+                <h3>{item.title}</h3>
+                <p>{item.desc}</p>
+              </article>
+            ))}
+          </div>
+          <div className="modern-guide__checklist">
+            <h3>常見應備資料</h3>
+            {documentChecklist.map((group) => (
+              <details key={group.title}>
+                <summary>{group.title}</summary>
+                <ul>
+                  {group.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </details>
+            ))}
+          </div>
+        </div>
+        <div className="modern-safety-strip">
+          {safetyNotes.map((item) => (
+            <span key={item}>{item}</span>
+          ))}
+        </div>
       </section>
 
       <section className="modern-charity">

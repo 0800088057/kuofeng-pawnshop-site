@@ -69,6 +69,18 @@ export default async function ServicePage({ params }: PageProps) {
             <InfoPanel title="應備文件" items={legacy.files} />
           </div>
 
+          <div className="legacy-detail-grid">
+            <InfoPanel title="適合先諮詢的情境" items={service.situations} />
+            <InfoPanel
+              title="評估前提醒"
+              items={[
+                "網站資訊僅供服務介紹，不能視為承作或額度保證。",
+                "利息、費用、保管、還款方式與期限，請以現場說明及契約為準。",
+                "若不確定資料是否齊全，可先來電確認，避免白跑一趟。",
+              ]}
+            />
+          </div>
+
           <section className="legacy-interest">
             <div>
               <h2>產品特色</h2>
