@@ -9,6 +9,17 @@ export const services = [
     icon: Building2,
     image: "/assets/old-blue/01-03.png",
     points: ["營運週轉", "店家資金", "短期資金安排"],
+    legacy: {
+      subtitle: "提供營運週轉與企業短期資金諮詢",
+      process: [
+        ["01", "/assets/legacy-web02/i21.png", "電話或線上諮詢", "初步評估"],
+        ["02", "/assets/legacy-web02/i22.png", "準備文件", "公司基本資料"],
+        ["03", "/assets/legacy-web02/i23.png", "簽約撥款", "依契約辦理"],
+      ],
+      advantages: ["個人戶、公司行號可先諮詢。", "協助釐清短期週轉與營運資金方向。", "貨物、原料、機器設備等可先評估。"],
+      files: ["主要往來銀行存摺。", "身份證與有照片之第二證件。", "營利事業登記資料。", "往來廠商基本資料與單據。", "公司股東名冊、財務報表。"],
+      interest: ["以月計息。", "費用與利息於簽約前清楚說明。", "實際條件、額度與撥款時程以評估及契約為準。"],
+    },
   },
   {
     slug: "car-loan",
@@ -18,6 +29,18 @@ export const services = [
     icon: Car,
     image: "/assets/old-blue/01-07.png",
     points: ["汽車借款", "營業車週轉", "代償降息諮詢"],
+    legacy: {
+      subtitle: "汽車、機車與營業車資金需求",
+      process: [
+        ["01", "/assets/legacy-web02/i01.png", "電話或線上諮詢", "初步評估"],
+        ["02", "/assets/legacy-web02/i02.png", "了解可貸額度", "依車況估價"],
+        ["03", "/assets/legacy-web02/i03.png", "準備相關文件", "行照、身分證等"],
+        ["04", "/assets/legacy-web02/i04.png", "簽約後撥款", "依契約辦理"],
+      ],
+      advantages: ["不限車種與車齡，仍需依車況評估。", "車輛目前有無貸款皆可先諮詢。", "每月到期可討論繳息延期方式。", "保密性佳，資料僅供評估使用。", "信用瑕疵、負債比偏高者可先了解可行方向。"],
+      files: ["行照正本。", "身份證與有照片之第二證件。", "車主與車輛親至本公司辦理。"],
+      interest: ["以月計息。", "費用與利息於簽約前清楚說明。", "實際利息、費用與還款方式以法令及契約為準。"],
+    },
   },
   {
     slug: "check-loan",
@@ -27,6 +50,18 @@ export const services = [
     icon: FileCheck2,
     image: "/assets/old-blue/01-15.png",
     points: ["支票貼現", "票據週轉", "企業短期資金"],
+    legacy: {
+      subtitle: "票據資金週轉與企業短期需求",
+      process: [
+        ["01", "/assets/legacy-web02/i17.png", "電話或線上諮詢", "初步評估"],
+        ["02", "/assets/legacy-web02/i18.png", "提供資料", "支票相關資料"],
+        ["03", "/assets/legacy-web02/i20.png", "了解可貸額度", "依票據評估"],
+        ["04", "/assets/legacy-web02/i19.png", "簽約撥款", "依契約辦理"],
+      ],
+      advantages: ["遠期支票可先評估貼現方向。", "個人戶、公司行號皆可先諮詢。"],
+      files: ["欲兌現之支票正本。", "身份證與有照片之第二證件。"],
+      interest: ["以月計息。", "費用與利息於簽約前清楚說明。", "票據條件、額度與撥款時間以實際評估為準。"],
+    },
   },
   {
     slug: "second-mortgage",
@@ -36,6 +71,18 @@ export const services = [
     icon: Home,
     image: "/assets/old-blue/01-09.png",
     points: ["房屋二胎", "房屋代償", "資產活用"],
+    legacy: {
+      subtitle: "房屋資產活用與二胎資金評估",
+      process: [
+        ["01", "/assets/legacy-web02/i16.png", "諮詢與房屋估價", "初步評估"],
+        ["02", "/assets/legacy-web02/i15.png", "了解可貸額度", "依房屋條件"],
+        ["03", "/assets/legacy-web02/i14.png", "了解相關費用", "簽約前說明"],
+        ["04", "/assets/legacy-web02/i13.png", "簽約後撥款", "依契約辦理"],
+      ],
+      advantages: ["可評估房屋二胎或增貸方向。", "協助釐清既有貸款與週轉需求。"],
+      files: ["土地/建物所有權狀。", "印鑑章、印鑑證明、戶籍謄本。", "所有權人身份證正本。"],
+      interest: ["以月計息。", "還款方式可依個案條件討論。", "實際月付、費用與利率以合約及法令規範為準。"],
+    },
   },
   {
     slug: "item-pawn",
@@ -45,6 +92,17 @@ export const services = [
     icon: Store,
     image: "/assets/old-blue/01-12.png",
     points: ["有價物品", "典當估價", "短期週轉"],
+    legacy: {
+      subtitle: "可評估有價物品典當需求",
+      process: [
+        ["01", "/assets/legacy-web02/i05.png", "電話或線上諮詢", "初步評估"],
+        ["02", "/assets/legacy-web02/i24.png", "準備相關文件", "身分證等"],
+        ["03", "/assets/legacy-web02/i19.png", "簽約撥款", "依契約辦理"],
+      ],
+      advantages: ["珠寶、名錶、包包等物品可先估價。", "依物品保存狀況與市場價值評估。", "保密性佳，資料僅供服務評估使用。"],
+      files: ["身份證與有照片之第二證件。", "物品與相關配件、文件。"],
+      interest: ["以月計息。", "費用與利息於簽約前清楚說明。", "估價、保管與還款方式以現場評估及契約為準。"],
+    },
   },
   {
     slug: "refinance",
@@ -54,6 +112,18 @@ export const services = [
     icon: Banknote,
     image: "/assets/old-blue/01-18.png",
     points: ["汽車代償", "房屋代償", "還款壓力評估"],
+    legacy: {
+      subtitle: "既有借款壓力與整合方向",
+      process: [
+        ["01", "/assets/legacy-web02/i05.png", "電話或線上諮詢", "初步評估"],
+        ["02", "/assets/legacy-web02/i06.png", "了解可貸額度", "依條件評估"],
+        ["03", "/assets/legacy-web02/i07.png", "準備相關文件", "身分證等"],
+        ["04", "/assets/legacy-web02/i08.png", "進行代償", "依契約辦理"],
+      ],
+      advantages: ["降息、增貸方向可先討論。", "即將流當之物品可評估代償可能。", "保密性佳，資料僅供評估使用。"],
+      files: ["身份證與有照片之第二證件。"],
+      interest: ["以月計息。", "費用與利息於簽約前清楚說明。", "代償條件與可行性以個案評估及契約為準。"],
+    },
   },
 ];
 

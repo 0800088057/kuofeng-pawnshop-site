@@ -1,5 +1,5 @@
-import { SectionTitle } from "@/components/SectionTitle";
-import { ServiceCard } from "@/components/ServiceCard";
+import Image from "next/image";
+import Link from "next/link";
 import { services } from "@/data/services";
 import { createMetadata } from "@/lib/metadata";
 
@@ -11,15 +11,37 @@ export const metadata = createMetadata({
 
 export default function ServicesPage() {
   return (
-    <section className="grid-paper px-4 py-16">
-      <div className="mx-auto max-w-6xl">
-        <SectionTitle title="服務項目" subtitle="每一項服務皆需依實際條件評估，利息、費用、保管與還款方式以契約及法令規範為準。" />
-        <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {services.map((service) => (
-            <ServiceCard key={service.slug} service={service} />
-          ))}
+    <div className="legacy-service-list">
+      <section className="legacy-breadcrumbs">
+        <div className="legacy-page-width">
+          <nav aria-label="麵包屑">
+            <Link href="/">首頁</Link>
+            <span>/</span>
+            <span>服務項目</span>
+          </nav>
+          <div className="legacy-breadcrumbs__title">
+            <Image src="/assets/legacy-web02/i04.png" alt="" width={301} height={221} />
+            <h1>服務項目</h1>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+      <section className="legacy-intermediate">
+        <div className="legacy-page-width">
+          <div className="legacy-section-title">
+            <h2>我們服務的項目</h2>
+            <p>每一項服務皆需依實際條件評估，利息、費用、保管與還款方式以契約及法令規範為準。</p>
+          </div>
+          <div className="legacy-service-card-list">
+            {services.map((service) => (
+              <Link href={`/services/${service.slug}`} key={service.slug}>
+                <h2>{service.title}</h2>
+                <Image src={service.image} alt={service.title} width={301} height={221} />
+                <p>{service.description}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }

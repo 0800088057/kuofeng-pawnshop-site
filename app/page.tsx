@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { MapPin, Phone } from "lucide-react";
+import { MapPin } from "lucide-react";
 import { siteConfig } from "@/data/site";
 
 const homeServices = [
@@ -72,18 +72,9 @@ export default function HomePage() {
   return (
     <div className="legacy-home">
       <section className="legacy-hero" aria-labelledby="home-heading">
-        <div className="legacy-hero__inner">
-          <h1 id="home-heading">
-            一通電話，
-            <br />
-            讓您遠離高利。
-          </h1>
-          <p>資金週轉短期需求可先來電諮詢，條件以現場評估與契約為準。</p>
-          <a href={`tel:${siteConfig.phone}`} className="legacy-hero__phone">
-            <Phone className="h-5 w-5" />
-            {siteConfig.phone}
-          </a>
-        </div>
+        <h1 id="home-heading" className="sr-only">
+          國豐當舖，一通電話，讓您遠離高利
+        </h1>
       </section>
 
       <section className="legacy-services">

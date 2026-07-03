@@ -1,9 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ContactForm } from "@/components/ContactForm";
-import { ProcessSteps } from "@/components/ProcessSteps";
-import { SectionTitle } from "@/components/SectionTitle";
 import { services } from "@/data/services";
 import { createMetadata } from "@/lib/metadata";
 
@@ -30,70 +27,83 @@ export default async function ServicePage({ params }: PageProps) {
   const { slug } = await params;
   const service = services.find((item) => item.slug === slug);
   if (!service) notFound();
-  const Icon = service.icon;
+  const legacy = service.legacy;
 
   return (
-    <>
-      <section className="blue-pattern px-4 py-16">
-        <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-[1fr_.85fr] md:items-center">
-          <div>
-            <p className="inline-flex rounded-full bg-brand-yellow px-5 py-2 text-sm font-black text-brand-dark comic-border">
-              國豐當舖服務
-            </p>
-            <h1 className="mt-6 text-5xl font-black leading-tight text-white md:text-7xl">{service.title}</h1>
-            <p className="mt-5 max-w-2xl text-lg font-bold leading-9 text-white/92">{service.description}</p>
-            <div className="mt-7 flex flex-wrap gap-3">
-              {service.points.map((point) => (
-                <span key={point} className="rounded-full bg-white px-4 py-2 text-sm font-black text-brand-deep">
-                  {point}
-                </span>
+    <div className="legacy-service-page">
+      <section className="legacy-breadcrumbs">
+        <div className="legacy-page-width">
+          <nav aria-label="麵包屑">
+            <Link href="/">首頁</Link>
+            <span>/</span>
+            <span>{service.title}</span>
+          </nav>
+          <div className="legacy-breadcrumbs__title">
+            <Image src={service.image} alt="" width={301} height={221} />
+            <h1>{service.title}</h1>
+          </div>
+        </div>
+      </section>
+
+      <section className="legacy-intermediate">
+        <div className="legacy-page-width">
+          <div className="legacy-process">
+            <div className="legacy-process__title">
+              <h2>作業流程</h2>
+              <p>{legacy.subtitle}</p>
+            </div>
+            <div className="legacy-process__grid">
+              {legacy.process.map(([step, image, title, note]) => (
+                <article key={`${service.slug}-${step}`}>
+                  <strong>{step}</strong>
+                  <Image src={image} alt={title} width={301} height={221} />
+                  <h3>{title}</h3>
+                  <p>{note}</p>
+                </article>
               ))}
             </div>
           </div>
-          <div className="rounded-[32px] bg-white p-8 comic-border">
-            <Icon className="mx-auto h-16 w-16 text-brand-blue" />
-            <Image src={service.image} alt={service.title} width={301} height={221} className="mx-auto mt-6 h-56 w-auto object-contain" />
-          </div>
-        </div>
-      </section>
 
-      <section className="grid-paper px-4 py-16">
-        <div className="mx-auto max-w-6xl">
-          <SectionTitle title={`${service.title}辦理重點`} subtitle="以下為初步說明，實際文件、條件與可承作方式以現場評估及契約為準。" />
-          <div className="mt-8 grid gap-5 md:grid-cols-3">
-            {["先確認需求", "評估條件與資料", "清楚說明契約"].map((title, index) => (
-              <article key={title} className="rounded-[28px] bg-white p-6 comic-border">
-                <p className="text-4xl font-black text-brand-blue">0{index + 1}</p>
-                <h2 className="mt-4 text-xl font-black text-brand-dark">{title}</h2>
-                <p className="mt-3 text-sm leading-7 text-slate-600">
-                  國豐當舖會依服務類型與個案條件提供說明，不以保證核准或固定額度作為承諾。
-                </p>
-              </article>
-            ))}
+          <div className="legacy-detail-grid">
+            <InfoPanel title="產品優點" items={legacy.advantages} />
+            <InfoPanel title="應備文件" items={legacy.files} />
           </div>
-        </div>
-      </section>
 
-      <section className="px-4 py-16">
-        <div className="mx-auto max-w-6xl">
-          <SectionTitle center title="辦理流程" subtitle="流程盡量簡單，但每一步都需要清楚確認。" />
-          <div className="mt-10">
-            <ProcessSteps />
-          </div>
-        </div>
-      </section>
+          <section className="legacy-interest">
+            <div>
+              <h2>產品特色</h2>
+              <ul>
+                {legacy.interest.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+            <Image src="/assets/legacy-web02/ho_i02.png" alt="電話諮詢" width={220} height={190} />
+          </section>
 
-      <section className="grid-paper px-4 py-16">
-        <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-[.9fr_1.1fr] md:items-start">
-          <div>
-            <SectionTitle title={`諮詢${service.title}`} subtitle="留下資料後，專人會依需求聯繫。第一版先保留前端表單驗證，後續可接通知。" />
-            <Link href="/services" className="mt-7 inline-flex rounded-full bg-brand-yellow px-6 py-3 text-sm font-black text-brand-dark comic-border">
-              回服務列表
-            </Link>
+          <div className="legacy-service-cta">
+            <h2>想了解{service.title}是否適合？</h2>
+            <p>請先來電或留下資料，國豐當舖會依您的實際條件說明可評估方向。實際額度、利息、費用與結果以現場評估及契約為準。</p>
+            <div>
+              <Link href="/contact">線上諮詢</Link>
+              <Link href="/services">回服務項目</Link>
+            </div>
           </div>
-          <ContactForm />
         </div>
       </section>
-    </>
+    </div>
+  );
+}
+
+function InfoPanel({ title, items }: { title: string; items: string[] }) {
+  return (
+    <article className="legacy-info-panel">
+      <h2>{title}</h2>
+      <ul>
+        {items.map((item) => (
+          <li key={item}>{item}</li>
+        ))}
+      </ul>
+    </article>
   );
 }
