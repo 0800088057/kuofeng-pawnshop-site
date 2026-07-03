@@ -1,59 +1,65 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Menu, Phone } from "lucide-react";
+import { Menu, MessageCircle, Phone } from "lucide-react";
 import { navigation, siteConfig } from "@/data/site";
 
 export function Header() {
   return (
-    <header className="fixed left-0 top-0 z-50 h-[72px] w-full border-b-4 border-brand-blue bg-white">
-      <div className="mx-auto flex h-full max-w-6xl items-center justify-between px-4">
+    <header className="fixed left-0 top-0 z-50 h-[78px] w-full bg-white shadow-[0_2px_10px_rgba(0,0,0,.08)]">
+      <div className="mx-auto flex h-full max-w-[1180px] items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-3" aria-label="回到首頁">
           <Image
-            src="/assets/old-blue/kuofeng-mark.jpg"
-            alt="國豐當舖商標"
-            width={56}
-            height={56}
-            className="h-12 w-12 rounded-full object-cover"
+            src="/assets/legacy-web02/logo.png"
+            alt="KF 國豐當舖"
+            width={265}
+            height={50}
+            className="h-auto w-[150px] md:w-[172px]"
             priority
           />
-          <span className="text-xl font-black tracking-wide text-brand-deep">
-            KF<span className="text-brand-blue">國豐當舖</span>
-          </span>
         </Link>
 
-        <nav className="hidden items-center gap-7 lg:flex" aria-label="主要導覽">
+        <nav className="hidden items-center gap-6 lg:flex" aria-label="主要導覽">
           {navigation.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="text-sm font-bold tracking-wide text-brand-dark transition hover:text-brand-blue"
+              className="text-[15px] font-bold tracking-wide text-slate-600 transition hover:text-brand-blue"
             >
               {item.label}
             </Link>
           ))}
         </nav>
 
-        <a
-          href={`tel:${siteConfig.phone}`}
-          className="hidden items-center gap-2 rounded-full bg-brand-yellow px-4 py-2 text-sm font-black text-brand-dark comic-border lg:inline-flex"
-        >
-          <Phone className="h-4 w-4" />
-          {siteConfig.phone}
-        </a>
+        <div className="hidden items-center gap-2 lg:flex">
+          <a
+            href={`tel:${siteConfig.phone}`}
+            aria-label={`撥打電話 ${siteConfig.phone}`}
+            className="flex h-[34px] w-[34px] items-center justify-center rounded-full border border-slate-300 text-slate-500 transition hover:border-brand-blue hover:text-brand-blue"
+          >
+            <Phone className="h-4 w-4" />
+          </a>
+          <a
+            href={siteConfig.lineUrl}
+            aria-label="LINE 諮詢"
+            className="flex h-[34px] w-[34px] items-center justify-center rounded-full border border-slate-300 text-slate-500 transition hover:border-brand-blue hover:text-brand-blue"
+          >
+            <MessageCircle className="h-4 w-4" />
+          </a>
+        </div>
 
         <details className="relative lg:hidden">
-          <summary className="flex h-11 w-11 cursor-pointer list-none items-center justify-center rounded-full bg-brand-blue text-white">
-            <Menu className="h-7 w-7" aria-hidden="true" />
+          <summary className="flex h-12 w-12 cursor-pointer list-none items-center justify-center text-brand-deep">
+            <Menu className="h-10 w-10" aria-hidden="true" />
           </summary>
-          <div className="absolute right-0 top-14 w-[min(86vw,320px)] rounded-b-2xl border-4 border-brand-dark bg-white p-3 shadow-comic">
+          <div className="absolute right-0 top-14 w-[min(86vw,320px)] rounded-b-2xl bg-white p-3 shadow-soft ring-1 ring-slate-100">
             <nav className="grid gap-1" aria-label="行動版導覽">
               {navigation.map((item) => (
-                <Link key={item.href} href={item.href} className="rounded-xl px-4 py-3 text-base font-bold text-brand-dark hover:bg-sky-50">
+                <Link key={item.href} href={item.href} className="rounded-xl px-4 py-3 text-base font-bold text-slate-700 hover:bg-sky-50">
                   {item.label}
                 </Link>
               ))}
             </nav>
-            <a href={`tel:${siteConfig.phone}`} className="mt-3 flex items-center justify-center rounded-full bg-brand-yellow px-4 py-3 text-sm font-black text-brand-dark">
+            <a href={`tel:${siteConfig.phone}`} className="mt-3 flex items-center justify-center rounded-full bg-brand-blue px-4 py-3 text-sm font-black text-white">
               {siteConfig.phone}
             </a>
           </div>

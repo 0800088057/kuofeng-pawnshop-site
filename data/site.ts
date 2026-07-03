@@ -13,10 +13,13 @@ export const siteConfig = {
 
 export const navigation = [
   { label: "首頁", href: "/" },
-  { label: "服務項目", href: "/services" },
-  { label: "借款流程", href: "/process" },
-  { label: "常見問題", href: "/faq" },
-  { label: "聯絡我們", href: "/contact" },
+  { label: "房屋二胎", href: "/services/second-mortgage" },
+  { label: "汽車借款", href: "/services/car-loan" },
+  { label: "支票借款", href: "/services/check-loan" },
+  { label: "工商融資", href: "/services/business-financing" },
+  { label: "房屋代償", href: "/services/refinance" },
+  { label: "代償當舖", href: "/services/refinance" },
+  { label: "萬物質借", href: "/services/item-pawn" },
 ];
 
 export const quickLinks = [
