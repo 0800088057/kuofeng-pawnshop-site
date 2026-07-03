@@ -10,8 +10,6 @@
 - `legacy-web02/i25.png`：首頁 hero 錢鈔人。
 - `legacy-web02/i09.png`、`i03.png`、`i20.png`、`i16.png`、`i13.png`、`i24.png`：首頁主要服務卡。
 - `legacy-web02/i10.png`、`i11.png`、`i12.png`：首頁補充服務圖解。
-- `old-blue/02.png`：角色與色票展示。
-- `legacy-web02/f01.jpg`、`in_i01.jpg`、`in_s01.jpg`、`n01.png`、`in_b02.png`：首頁品牌素材展示。
 - `legacy-web02/in_i02.jpg`、`in_i03.jpg`、`in_b03.png`：公益區。
 - `legacy-web02/footer-qr-mascot.png`：聯絡區。
 
@@ -20,6 +18,8 @@
 - `old-blue/01-03.png` 到 `old-blue/01-26.png`：服務圖示總覽。
 - `old-blue/blue-home.png`：舊版首頁藍色版型展示。
 - `old-blue/service-modules.png`：服務模組總覽展示。
+- `old-blue/02.png`：角色與色票展示。
+- `legacy-web02/f01.jpg`、`in_i01.jpg`、`in_s01.jpg`、`n01.png`、`in_b02.png`：移到服務總覽素材牆集中展示，不放在首頁素材牆，避免破壞首頁版面。
 - `old-blue/module-02.png`：模組素材展示。
 - `old-blue/blue-second-mortgage.png`：房屋二胎說明展示。
 - `old-blue/second-mortgage-flow.png`：房屋二胎流程展示。

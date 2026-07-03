@@ -47,6 +47,11 @@ const legacyBoards = [
   { title: "房屋代償流程", image: "/assets/old-blue/house-refinance-flow.png", width: 1080, height: 1051 },
   { title: "國豐圖章", image: "/assets/old-blue/kuofeng-mark.jpg", width: 501, height: 400 },
   { title: "舊站完整參考", image: "/assets/old-blue/web.png", width: 1920, height: 5516 },
+  { title: "門市服務橫幅", image: "/assets/legacy-web02/f01.jpg", width: 1158, height: 333 },
+  { title: "公益補充素材", image: "/assets/legacy-web02/in_i01.jpg", width: 469, height: 316 },
+  { title: "形象橫幅素材", image: "/assets/legacy-web02/in_s01.jpg", width: 1200, height: 403 },
+  { title: "LINE 聯絡橫條", image: "/assets/legacy-web02/n01.png", width: 620, height: 90 },
+  { title: "角色延伸素材", image: "/assets/legacy-web02/in_b02.png", width: 500, height: 316 },
 ];
 
 export default function ServicesPage() {
