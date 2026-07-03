@@ -1414,7 +1414,10 @@ main {
 }
 
 .legacy-interest--wide {
-  align-items: end;
+  position: relative;
+  display: block;
+  min-height: 410px;
+  padding: 0 310px 28px 0;
 }
 
 .legacy-interest h2 {
@@ -1435,6 +1438,14 @@ main {
   width: 220px;
   height: 190px;
   object-fit: contain;
+}
+
+.legacy-interest--wide img {
+  position: absolute;
+  right: 38px;
+  bottom: 28px;
+  width: 250px;
+  height: auto;
 }
 
 .legacy-service-cta {
@@ -1750,7 +1761,17 @@ main {
     padding: 0 0 24px;
   }
 
+  .legacy-interest--wide {
+    min-height: 0;
+    padding: 0 0 24px;
+  }
+
   .legacy-interest img {
     margin: 0 auto;
+  }
+
+  .legacy-interest--wide img {
+    position: static;
+    width: 220px;
   }
 }
