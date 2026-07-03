@@ -30,8 +30,9 @@ export function ContactForm() {
     setErrors((current) => ({ ...current, [field]: undefined }));
   }
 
-  function submit(event: FormEvent<HTMLFormElement>) {
+  async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    setStatus("");
     const parsed = contactFormSchema.safeParse(form);
     if (!parsed.success) {
       const fieldErrors = parsed.error.flatten().fieldErrors;
@@ -39,8 +40,24 @@ export function ContactForm() {
       return;
     }
 
-    setStatus("已收到您的資料。第一版目前保留前端驗證，後續可接 Email、LINE 或資料庫通知。");
-    setForm(initialState);
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(parsed.data),
+      });
+      const result = (await response.json()) as { message?: string };
+
+      if (!response.ok) {
+        setStatus(result.message || "送出失敗，請稍後再試。");
+        return;
+      }
+
+      setStatus(result.message || "已收到您的諮詢資料。");
+      setForm(initialState);
+    } catch {
+      setStatus("目前無法送出表單，請改用電話或 LINE 聯絡。");
+    }
   }
 
   return (
