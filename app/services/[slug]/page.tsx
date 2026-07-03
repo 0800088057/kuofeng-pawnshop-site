@@ -91,7 +91,6 @@ export default async function ServicePage({ params }: PageProps) {
                 ))}
               </ul>
             </div>
-            <Image src="/assets/legacy-web02/ho_i02.png" alt="電話諮詢" width={220} height={190} />
           </section>
 
           <div className="legacy-service-cta">
