@@ -352,27 +352,75 @@ main {
 
 .legacy-contact {
   display: grid;
-  grid-template-columns: 1fr 1.05fr;
-  gap: 42px;
-  width: min(100%, 960px);
+  grid-template-columns: 480px 1fr;
+  align-items: start;
+  gap: 36px;
+  width: min(100%, 980px);
   margin: 0 auto;
-  padding: 70px 24px 50px;
+  padding: 58px 24px 46px;
 }
 
 .legacy-contact__info {
   display: grid;
-  grid-template-columns: 220px 1fr;
+  grid-template-columns: 150px 1fr;
   align-items: start;
-  gap: 22px;
+  gap: 18px;
   color: #555;
-  font-size: 0.88rem;
-  line-height: 1.8;
+  font-size: 0.82rem;
+  line-height: 1.72;
+}
+
+.legacy-contact__info > img {
+  width: 150px;
+  height: auto;
+  object-fit: contain;
+}
+
+.legacy-contact__text p {
+  margin: 0 0 2px;
+  display: grid;
+  grid-template-columns: 74px 1fr;
+}
+
+.legacy-contact__text span {
+  color: #777;
+  font-weight: 800;
+}
+
+.legacy-contact__text strong {
+  color: #555;
+  font-weight: 700;
+}
+
+.legacy-contact__links {
+  display: grid;
+  grid-template-columns: 74px repeat(3, minmax(0, 1fr));
+  gap: 3px 10px;
+  margin-top: 14px;
+  border-top: 1px solid #e7e7e7;
+  padding-top: 12px;
+  font-size: 0.78rem;
+}
+
+.legacy-contact__links span {
+  grid-row: span 2;
+  color: #555;
+  font-weight: 900;
+}
+
+.legacy-contact__links a {
+  color: #666;
+  font-weight: 700;
+}
+
+.legacy-contact__links a:hover {
+  color: #2ca2cf;
 }
 
 .legacy-contact__map iframe {
   display: block;
   width: 100%;
-  height: 220px;
+  height: 230px;
   border: 0;
   filter: saturate(0.75);
 }
@@ -766,10 +814,29 @@ main {
 
   .legacy-contact {
     grid-template-columns: 1fr;
+    gap: 24px;
+    padding-top: 42px;
   }
 
   .legacy-contact__info {
-    grid-template-columns: 1fr;
+    grid-template-columns: 120px 1fr;
+    gap: 14px;
+  }
+
+  .legacy-contact__info > img {
+    width: 120px;
+  }
+
+  .legacy-contact__text p {
+    grid-template-columns: 70px 1fr;
+  }
+
+  .legacy-contact__links {
+    grid-template-columns: 70px repeat(2, minmax(0, 1fr));
+  }
+
+  .legacy-contact__map iframe {
+    height: 210px;
   }
 
   .legacy-floating-cta {

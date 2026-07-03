@@ -148,11 +148,32 @@ export default function HomePage() {
       <section className="legacy-contact">
         <div className="legacy-contact__info">
           <Image src="/assets/legacy-web02/n01.png" alt="國豐當舖 LINE QR Code" width={220} height={78} />
-          <div>
-            <p>服務地址：{siteConfig.address}</p>
-            <p>服務時間：{siteConfig.openingHours}</p>
-            <p>服務電話：{siteConfig.phone}</p>
-            <p>統一編號：{siteConfig.taxId}</p>
+          <div className="legacy-contact__text">
+            <p>
+              <span>服務地址：</span>
+              <strong>{siteConfig.address}</strong>
+            </p>
+            <p>
+              <span>服務時間：</span>
+              <strong>{siteConfig.openingHours}</strong>
+            </p>
+            <p>
+              <span>服務電話：</span>
+              <strong>{siteConfig.phone}</strong>
+            </p>
+            <p>
+              <span>統一編號：</span>
+              <strong>{siteConfig.taxId}</strong>
+            </p>
+            <div className="legacy-contact__links">
+              <span>網站地圖</span>
+              <Link href="/services/second-mortgage">房屋二胎</Link>
+              <Link href="/services/car-loan">汽車借款</Link>
+              <Link href="/services/check-loan">支票借款</Link>
+              <Link href="/services/business-financing">工商融資</Link>
+              <Link href="/services/refinance">房屋代償</Link>
+              <Link href="/services/item-pawn">萬物質借</Link>
+            </div>
           </div>
         </div>
         <div className="legacy-contact__map">
