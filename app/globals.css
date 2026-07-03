@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background: #ffffff;
+  color: #17384b;
+  font-family: "Noto Sans TC", "Microsoft JhengHei", system-ui, sans-serif;
+}
+
+img,
+svg {
+  max-width: 100%;
+}
+
+main {
+  padding-top: 72px;
+}
+
+.grid-paper {
+  background-image:
+    linear-gradient(rgba(31, 156, 204, 0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(31, 156, 204, 0.09) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+.blue-pattern {
+  background-color: #28a8d3;
+  background-image:
+    radial-gradient(circle at 12px 12px, rgba(255, 255, 255, 0.22) 2px, transparent 3px),
+    radial-gradient(circle at 38px 38px, rgba(255, 255, 255, 0.12) 2px, transparent 3px);
+  background-size: 52px 52px;
+}
+
+.comic-border {
+  border: 3px solid #17384b;
+  box-shadow: 0 7px 0 rgba(23, 56, 75, 0.14);
+}
