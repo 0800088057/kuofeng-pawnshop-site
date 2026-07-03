@@ -55,6 +55,21 @@ const principles = [
   ["在地服務", "台北市大同區實體門市，方便現場諮詢與資料確認。"],
 ];
 
+const quickVisuals = [
+  { title: "資料確認", image: "/assets/legacy-web02/i10.png" },
+  { title: "條件盤點", image: "/assets/legacy-web02/i11.png" },
+  { title: "專人說明", image: "/assets/legacy-web02/i12.png" },
+];
+
+const brandVisuals = [
+  { title: "服務識別", desc: "舊版藍色角色稿，保留國豐親切的錢鈔人風格。", image: "/assets/old-blue/02.png", width: 501, height: 400 },
+  { title: "門市服務", desc: "可用於信任感與實體門市介紹。", image: "/assets/legacy-web02/f01.jpg", width: 1158, height: 333 },
+  { title: "公益關懷", desc: "延續舊站公益與在地服務形象。", image: "/assets/legacy-web02/in_i01.jpg", width: 469, height: 316 },
+  { title: "形象橫幅", desc: "可作為段落分隔與品牌氛圍圖。", image: "/assets/legacy-web02/in_s01.jpg", width: 1200, height: 403 },
+  { title: "LINE 聯絡", desc: "QR 與角色素材，保留快速聯絡入口。", image: "/assets/legacy-web02/n01.png", width: 620, height: 90 },
+  { title: "角色延伸", desc: "保留舊站可用角色素材，後續可再拆透明圖。", image: "/assets/legacy-web02/in_b02.png", width: 500, height: 316 },
+];
+
 export default function HomePage() {
   return (
     <div className="modern-home">
@@ -155,6 +170,22 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="modern-quick-visuals modern-page">
+        <div className="modern-section-head">
+          <p>Visual Guide</p>
+          <h2>先把條件與資料看清楚</h2>
+          <span>沿用舊站錢鈔人圖示，讓服務步驟更直覺。</span>
+        </div>
+        <div className="modern-quick-visuals__grid">
+          {quickVisuals.map((item) => (
+            <article key={item.title}>
+              <Image src={item.image} alt={item.title} width={301} height={221} />
+              <h3>{item.title}</h3>
+            </article>
+          ))}
+        </div>
+      </section>
+
       <section className="modern-notice modern-page">
         <div>
           <CheckCircle2 className="h-7 w-7" />
@@ -163,6 +194,25 @@ export default function HomePage() {
         <p>
           實際利息、費用、保管、還款方式與可承作條件，均以現場評估、法令規範與合約內容為準。網站資訊僅供服務介紹。
         </p>
+      </section>
+
+      <section className="modern-brand-assets modern-page">
+        <div className="modern-section-head">
+          <p>Brand Assets</p>
+          <h2>把舊站留下的角色素材都用起來</h2>
+          <span>保留藍色元素與錢鈔人辨識度，同時讓新版頁面保持乾淨。</span>
+        </div>
+        <div className="modern-brand-assets__grid">
+          {brandVisuals.map((item) => (
+            <article key={item.title}>
+              <div>
+                <Image src={item.image} alt={item.title} width={item.width} height={item.height} />
+              </div>
+              <h3>{item.title}</h3>
+              <p>{item.desc}</p>
+            </article>
+          ))}
+        </div>
       </section>
 
       <section className="modern-charity">
