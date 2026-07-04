@@ -18,12 +18,12 @@ export function Header() {
           />
         </Link>
 
-        <nav className="hidden items-center gap-6 lg:flex" aria-label="主要導覽">
+        <nav className="hidden items-center gap-5 lg:flex" aria-label="主要導覽">
           {navigation.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="text-[15px] font-bold tracking-wide text-slate-600 transition hover:text-brand-blue"
+              className="text-[14px] font-bold tracking-wide text-slate-600 transition hover:text-brand-blue"
             >
               {item.label}
             </Link>

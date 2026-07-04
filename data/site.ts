@@ -20,6 +20,7 @@ export const navigation = [
   { label: "支票借款", href: "/services/check-loan" },
   { label: "工商融資", href: "/services/business-financing" },
   { label: "代償當舖", href: "/services/refinance" },
+  { label: "知識庫", href: "/knowledge" },
   { label: "流程", href: "/process" },
   { label: "常見問題", href: "/faq" },
   { label: "聯絡我們", href: "/contact" },

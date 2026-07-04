@@ -1,0 +1,182 @@
+import Image from "next/image";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { articles } from "@/data/articles";
+import { siteConfig } from "@/data/site";
+import { createMetadata } from "@/lib/metadata";
+
+type PageProps = {
+  params: Promise<{ slug: string }>;
+};
+
+export function generateStaticParams() {
+  return articles.map((article) => ({ slug: article.slug }));
+}
+
+export async function generateMetadata({ params }: PageProps) {
+  const { slug } = await params;
+  const article = articles.find((item) => item.slug === slug);
+  if (!article) return {};
+
+  return createMetadata({
+    title: article.title,
+    description: article.description,
+    path: `/knowledge/${article.slug}`,
+  });
+}
+
+export default async function KnowledgeArticlePage({ params }: PageProps) {
+  const { slug } = await params;
+  const article = articles.find((item) => item.slug === slug);
+  if (!article) notFound();
+
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: article.title,
+    description: article.description,
+    image: new URL(article.cover.src, siteConfig.url).toString(),
+    datePublished: article.date,
+    dateModified: article.date,
+    author: {
+      "@type": "Organization",
+      name: siteConfig.name,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: siteConfig.name,
+    },
+    mainEntityOfPage: new URL(`/knowledge/${article.slug}`, siteConfig.url).toString(),
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: article.faq.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
+
+  return (
+    <article className="knowledge-article">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+
+      <header className="knowledge-article__header legacy-page-width">
+        <nav aria-label="麵包屑">
+          <Link href="/">首頁</Link>
+          <span>/</span>
+          <Link href="/knowledge">當舖知識庫</Link>
+          <span>/</span>
+          <span>{article.category}</span>
+        </nav>
+        <p className="knowledge-eyebrow">{article.category}</p>
+        <h1>{article.title}</h1>
+        <time dateTime={article.date}>最後更新：{article.date}</time>
+        <Image className="knowledge-article__cover" src={article.cover.src} alt={article.cover.alt} width={article.cover.width} height={article.cover.height} priority />
+        <p className="knowledge-article__lead">{article.excerpt}</p>
+      </header>
+
+      <div className="knowledge-article__body legacy-page-width">
+        <aside className="knowledge-toc" aria-label="文章目錄">
+          <strong>文章重點</strong>
+          {article.sections.map((section) => (
+            <a href={`#${section.heading}`} key={section.heading}>
+              {section.heading}
+            </a>
+          ))}
+          <a href="#faq">常見問題</a>
+        </aside>
+
+        <div className="knowledge-content">
+          {article.sections.map((section) => (
+            <section id={section.heading} key={section.heading}>
+              <h2>{section.heading}</h2>
+              {section.body.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+              {section.table ? (
+                <div className="knowledge-table-wrap">
+                  <table>
+                    <thead>
+                      <tr>
+                        {section.table.headers.map((header) => (
+                          <th key={header}>{header}</th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {section.table.rows.map((row) => (
+                        <tr key={row.join("-")}>
+                          {row.map((cell) => (
+                            <td key={cell}>{cell}</td>
+                          ))}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              ) : null}
+              {section.list ? (
+                <ul>
+                  {section.list.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              ) : null}
+              {section.image ? <Image className="knowledge-inline-image" src={section.image.src} alt={section.image.alt} width={section.image.width} height={section.image.height} /> : null}
+            </section>
+          ))}
+
+          <section id="faq" className="knowledge-faq">
+            <h2>常見問題 FAQ</h2>
+            {article.faq.map((item) => (
+              <details key={item.question}>
+                <summary>{item.question}</summary>
+                <p>{item.answer}</p>
+              </details>
+            ))}
+          </section>
+
+          <section className="knowledge-disclaimer">
+            <h2>申辦前提醒</h2>
+            <p>
+              本文為一般資訊整理，不構成借款承諾或核准保證。實際借款金額、利息、費用、期限與契約條件，均以國豐當舖現場評估、相關規範與雙方契約為準。
+            </p>
+          </section>
+
+          <section className="knowledge-references">
+            <h2>參考來源</h2>
+            <ul>
+              {article.references.map((reference) => (
+                <li key={reference.href}>
+                  <a href={reference.href} target="_blank" rel="noreferrer">
+                    {reference.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          <section className="knowledge-cta">
+            <Image src={article.ctaImage.src} alt={article.ctaImage.alt} width={article.ctaImage.width} height={article.ctaImage.height} />
+            <div>
+              <h2>想先確認是否適合評估？</h2>
+              <p>可先準備行照與雙證件，透過電話或 LINE 說明車況與需求，由國豐當舖協助確認可評估方向。</p>
+              <div>
+                <a href={`tel:${siteConfig.phone}`}>{siteConfig.phone}</a>
+                <a href={siteConfig.lineUrl}>加入 LINE 諮詢</a>
+                <Link href="/contact">填寫線上表單</Link>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </article>
+  );
+}
