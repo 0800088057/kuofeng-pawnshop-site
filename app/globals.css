@@ -2251,3 +2251,361 @@ main {
   }
 
 }
+
+/* Preview theme: professional blue-gold direction for 國豐當舖. */
+:root {
+  --kf-pro-ink: #102b3c;
+  --kf-pro-blue: #0b4f6c;
+  --kf-pro-blue-2: #166f8f;
+  --kf-pro-sky: #2faed2;
+  --kf-pro-gold: #f2b84b;
+  --kf-pro-gold-soft: #fff4d8;
+  --kf-pro-paper: #f4fafc;
+  --kf-pro-line: rgba(11, 79, 108, 0.16);
+  --kf-pro-shadow: 0 22px 58px rgba(12, 58, 79, 0.13);
+}
+
+body {
+  background:
+    radial-gradient(circle at 8% 5%, rgba(47, 174, 210, 0.11), transparent 32%),
+    linear-gradient(180deg, #ffffff 0%, #f7fbfd 58%, #ffffff 100%);
+  color: var(--kf-pro-ink);
+}
+
+header.fixed {
+  height: 84px;
+  border-bottom: 1px solid rgba(11, 79, 108, 0.1);
+  background: rgba(255, 255, 255, 0.94) !important;
+  box-shadow: 0 10px 34px rgba(12, 58, 79, 0.08) !important;
+  backdrop-filter: blur(14px);
+}
+
+main {
+  padding-top: 84px;
+}
+
+footer.bg-white {
+  border-top: 1px solid rgba(242, 184, 75, 0.22);
+  background:
+    radial-gradient(circle at 78% 18%, rgba(242, 184, 75, 0.15), transparent 26%),
+    linear-gradient(135deg, #0b3449 0%, #0d4f6d 100%) !important;
+  color: #fff;
+}
+
+footer.bg-white > div {
+  max-width: 1160px;
+  border-color: rgba(255, 255, 255, 0.14) !important;
+  color: rgba(255, 255, 255, 0.76) !important;
+}
+
+footer.bg-white a:hover {
+  color: #fff7d6;
+}
+
+.modern-home {
+  --kf-blue: var(--kf-pro-sky);
+  --kf-deep: var(--kf-pro-blue);
+  --kf-dark: var(--kf-pro-ink);
+  --kf-soft: var(--kf-pro-paper);
+  --kf-line: var(--kf-pro-line);
+  background:
+    linear-gradient(180deg, #fff 0%, #f7fbfd 48%, #fff 100%);
+}
+
+.modern-page,
+.legacy-page-width {
+  width: min(100%, 1180px);
+}
+
+.modern-eyebrow,
+.modern-section-head p,
+.knowledge-eyebrow {
+  color: var(--kf-pro-blue-2);
+}
+
+.modern-hero {
+  min-height: 720px;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.97) 0%, rgba(255, 255, 255, 0.82) 38%, rgba(255, 255, 255, 0.18) 100%),
+    linear-gradient(135deg, rgba(11, 79, 108, 0.12), rgba(47, 174, 210, 0.08)),
+    url("/assets/ui/kf-hero-banner.png") center top / cover no-repeat;
+}
+
+.modern-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(242, 184, 75, 0.16), transparent 34%),
+    radial-gradient(circle at 74% 42%, rgba(47, 174, 210, 0.22), transparent 26%);
+  pointer-events: none;
+}
+
+.modern-hero::after {
+  height: 180px;
+  background: linear-gradient(176deg, rgba(255, 255, 255, 0) 0%, #fff 52%);
+  transform: none;
+}
+
+.modern-hero .modern-page {
+  grid-template-columns: minmax(0, 1fr) 420px;
+  min-height: 720px;
+  padding-top: 78px;
+}
+
+.modern-hero__content h1 {
+  max-width: 720px;
+  color: var(--kf-pro-ink);
+  font-size: clamp(2.7rem, 6.4vw, 5.15rem);
+  line-height: 1.1;
+  text-shadow: 0 2px 0 rgba(255, 255, 255, 0.76);
+}
+
+.modern-hero__content > p:not(.modern-eyebrow) {
+  max-width: 660px;
+  color: #405a67;
+  font-size: 1.08rem;
+}
+
+.modern-hero__actions a {
+  box-shadow: 0 18px 44px rgba(11, 79, 108, 0.16);
+}
+
+.modern-hero__actions a:first-child {
+  background: linear-gradient(135deg, var(--kf-pro-blue), var(--kf-pro-blue-2));
+}
+
+.modern-hero__actions a:last-child,
+.modern-section-link {
+  background: #fff;
+  color: var(--kf-pro-blue);
+  border: 1px solid rgba(11, 79, 108, 0.16);
+}
+
+.modern-hero__metrics span {
+  border: 1px solid rgba(11, 79, 108, 0.14);
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 14px 34px rgba(12, 58, 79, 0.08);
+}
+
+.modern-hero__metrics strong {
+  color: var(--kf-pro-blue);
+}
+
+.modern-hero__trustbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.modern-hero__trustbar span {
+  border: 1px solid rgba(242, 184, 75, 0.5);
+  border-radius: 999px;
+  background: rgba(255, 244, 216, 0.82);
+  padding: 7px 13px;
+  color: #72520b;
+  font-size: 0.88rem;
+  font-weight: 900;
+}
+
+.modern-hero__visual {
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 34px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.84), rgba(255, 255, 255, 0.22)),
+    radial-gradient(circle at 48% 24%, rgba(242, 184, 75, 0.22), transparent 42%);
+  box-shadow: 0 30px 70px rgba(12, 58, 79, 0.17);
+}
+
+.modern-section-head h2,
+.knowledge-hero h1,
+.knowledge-article__header h1 {
+  color: var(--kf-pro-ink);
+}
+
+.modern-services {
+  padding-top: 54px;
+}
+
+.legacy-home-service-grid {
+  gap: 24px;
+}
+
+.legacy-home-service-card {
+  position: relative;
+  min-height: 410px;
+  border: 1px solid rgba(11, 79, 108, 0.16);
+  border-radius: 12px;
+  background:
+    linear-gradient(#fff, #fff) padding-box,
+    linear-gradient(135deg, rgba(47, 174, 210, 0.46), rgba(242, 184, 75, 0.5)) border-box;
+  box-shadow: var(--kf-pro-shadow);
+}
+
+.legacy-home-service-card h3 {
+  background: linear-gradient(135deg, var(--kf-pro-blue), var(--kf-pro-sky));
+  padding: 18px 18px 19px;
+}
+
+.legacy-home-service-card img {
+  width: 188px;
+  height: 145px;
+}
+
+.legacy-home-service-card p {
+  color: #536b76;
+  padding-bottom: 16px;
+}
+
+.legacy-home-service-card span {
+  justify-self: center;
+  margin: 0 0 28px;
+  border-radius: 999px;
+  background: var(--kf-pro-gold-soft);
+  padding: 8px 16px;
+  color: #72520b;
+  font-size: 0.9rem;
+  font-weight: 900;
+}
+
+.modern-principles,
+.modern-charity {
+  background:
+    radial-gradient(circle at 12% 18%, rgba(242, 184, 75, 0.18), transparent 26%),
+    linear-gradient(135deg, #0b4f6c, #1680a3);
+}
+
+.modern-principle-list article,
+.modern-quick-visuals__grid article,
+.modern-guide__scenarios article,
+.modern-guide__checklist,
+.modern-contact__info,
+.knowledge-card,
+.modern-knowledge-card,
+.knowledge-toc,
+.knowledge-faq details {
+  border-color: rgba(11, 79, 108, 0.14);
+  box-shadow: var(--kf-pro-shadow);
+}
+
+.modern-process-grid article,
+.modern-safety-strip span {
+  border-left-color: var(--kf-pro-gold);
+  background: linear-gradient(180deg, #ffffff, #f5fbfd);
+  box-shadow: 0 12px 32px rgba(12, 58, 79, 0.06);
+}
+
+.modern-process-grid strong,
+.knowledge-card span,
+.modern-knowledge-card span,
+.knowledge-faq summary,
+.knowledge-references a {
+  color: var(--kf-pro-blue);
+}
+
+.modern-notice {
+  border: 1px solid rgba(242, 184, 75, 0.28);
+  background:
+    linear-gradient(90deg, rgba(255, 244, 216, 0.76), rgba(244, 250, 252, 0.94));
+  box-shadow: 0 18px 42px rgba(12, 58, 79, 0.08);
+}
+
+.modern-notice h2 {
+  color: var(--kf-pro-blue);
+}
+
+.modern-contact iframe {
+  border: 1px solid rgba(11, 79, 108, 0.12);
+  box-shadow: var(--kf-pro-shadow);
+}
+
+.modern-floating-cta a {
+  background: linear-gradient(135deg, var(--kf-pro-blue), var(--kf-pro-blue-2));
+}
+
+.modern-floating-cta a:nth-child(3) {
+  background: linear-gradient(135deg, #06c755, #11a846);
+}
+
+.knowledge-hero {
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.86)),
+    url("/assets/ui/kf-hero-banner.png") center / cover no-repeat;
+}
+
+.knowledge-article__lead {
+  border-left-color: var(--kf-pro-gold);
+  background: linear-gradient(90deg, var(--kf-pro-gold-soft), #fff);
+}
+
+.knowledge-table-wrap th {
+  background: linear-gradient(135deg, var(--kf-pro-blue), var(--kf-pro-blue-2));
+}
+
+.knowledge-cta {
+  border: 1px solid rgba(11, 79, 108, 0.14);
+  background:
+    radial-gradient(circle at 90% 14%, rgba(242, 184, 75, 0.18), transparent 26%),
+    linear-gradient(135deg, #f7fcfe, #fff);
+  box-shadow: var(--kf-pro-shadow);
+}
+
+.knowledge-cta a {
+  background: var(--kf-pro-blue);
+}
+
+.knowledge-cta a:nth-child(2) {
+  background: #06c755;
+}
+
+.knowledge-cta a:nth-child(3) {
+  color: var(--kf-pro-blue);
+}
+
+@media (max-width: 980px) {
+  header.fixed {
+    height: 88px;
+  }
+
+  .modern-hero .modern-page {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding-top: 44px;
+    padding-bottom: 86px;
+  }
+
+  .modern-hero__content h1 {
+    font-size: clamp(2.15rem, 12vw, 3.45rem);
+  }
+
+  .modern-hero__content,
+  .modern-hero__content h1,
+  .modern-hero__content > p:not(.modern-eyebrow) {
+    max-width: 100%;
+  }
+
+  .modern-hero__visual {
+    display: none;
+  }
+
+  .modern-hero__metrics {
+    gap: 10px;
+  }
+
+  .legacy-home-service-card {
+    min-height: 360px;
+  }
+
+  .modern-floating-cta {
+    right: 10px;
+    bottom: 72px;
+  }
+
+  .modern-floating-cta a {
+    height: 52px;
+    width: 52px;
+    border-radius: 16px;
+    font-size: 0.72rem;
+  }
+}

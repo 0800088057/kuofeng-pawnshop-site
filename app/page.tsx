@@ -99,6 +99,12 @@ export default function HomePage() {
                 門市諮詢
               </span>
             </div>
+            <div className="modern-hero__trustbar" aria-label="服務信任重點">
+              <span>合法登記</span>
+              <span>現場評估</span>
+              <span>契約說明</span>
+              <span>資訊透明</span>
+            </div>
           </div>
           <div className="modern-hero__visual">
             <Image src="/assets/legacy-web02/i25.png" alt="國豐當舖錢鈔人" width={360} height={335} priority />
@@ -118,6 +124,7 @@ export default function HomePage() {
               <h3>{service.title}</h3>
               <Image src={service.image} alt={service.title} width={301} height={221} />
               <p>{service.desc}</p>
+              <span>了解服務</span>
             </Link>
           ))}
         </div>
