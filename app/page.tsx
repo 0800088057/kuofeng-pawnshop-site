@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Building2, CheckCircle2, Clock3, MapPin, Phone, ShieldCheck } from "lucide-react";
+import { articles } from "@/data/articles";
 import { documentChecklist, safetyNotes, scenarioGuides } from "@/data/content";
 import { siteConfig } from "@/data/site";
 
@@ -172,6 +173,33 @@ export default function HomePage() {
               <Image src={item.image} alt={item.title} width={301} height={221} />
               <h3>{item.title}</h3>
             </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="modern-knowledge modern-page">
+        <div className="modern-section-head modern-section-head--row">
+          <div>
+            <p>Knowledge</p>
+            <h2>申辦前先看懂重點</h2>
+            <span>整理文件、估價、利息與流程常見問題，讓您諮詢前先有方向。</span>
+          </div>
+          <Link href="/knowledge" className="modern-section-link">
+            查看全部文章
+            <ArrowRight className="h-5 w-5" />
+          </Link>
+        </div>
+        <div className="modern-knowledge__grid">
+          {articles.slice(0, 3).map((article) => (
+            <Link href={`/knowledge/${article.slug}`} className="modern-knowledge-card" key={article.slug}>
+              <Image src={article.cover.src} alt={article.cover.alt} width={article.cover.width} height={article.cover.height} />
+              <div>
+                <span>{article.category}</span>
+                <time dateTime={article.date}>{article.date}</time>
+              </div>
+              <h3>{article.title}</h3>
+              <p>{article.description}</p>
+            </Link>
           ))}
         </div>
       </section>

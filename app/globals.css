@@ -203,6 +203,12 @@ main {
   margin-bottom: 36px;
 }
 
+.modern-section-head--row {
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 24px;
+}
+
 .modern-section-head p {
   margin: 0;
   color: var(--kf-blue);
@@ -222,6 +228,19 @@ main {
 .modern-section-head span {
   color: #6b7b83;
   font-weight: 700;
+}
+
+.modern-section-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 999px;
+  background: var(--kf-deep);
+  padding: 12px 18px;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 900;
+  box-shadow: 0 14px 30px rgba(21, 95, 130, 0.16);
 }
 
 .modern-services {
@@ -450,6 +469,77 @@ main {
   color: var(--kf-dark);
   font-size: 1.15rem;
   font-weight: 900;
+}
+
+.modern-knowledge {
+  padding-top: 4px;
+  padding-bottom: 88px;
+}
+
+.modern-knowledge__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.modern-knowledge-card {
+  display: block;
+  overflow: hidden;
+  border: 1px solid var(--kf-line);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 18px 42px rgba(21, 95, 130, 0.08);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+.modern-knowledge-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(44, 162, 207, 0.44);
+  box-shadow: 0 24px 52px rgba(21, 95, 130, 0.14);
+}
+
+.modern-knowledge-card img {
+  width: 100%;
+  aspect-ratio: 1200 / 630;
+  object-fit: cover;
+}
+
+.modern-knowledge-card div {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 20px 0;
+}
+
+.modern-knowledge-card span {
+  border: 1px solid var(--kf-blue);
+  border-radius: 999px;
+  padding: 4px 12px;
+  color: var(--kf-deep);
+  font-size: 0.82rem;
+  font-weight: 900;
+}
+
+.modern-knowledge-card time {
+  color: #7b8b92;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.modern-knowledge-card h3 {
+  margin: 16px 20px 0;
+  color: #102c42;
+  font-size: 1.2rem;
+  font-weight: 900;
+  line-height: 1.55;
+}
+
+.modern-knowledge-card p {
+  margin: 10px 20px 22px;
+  color: #60737d;
+  font-weight: 700;
+  line-height: 1.8;
 }
 
 .modern-notice {
@@ -756,10 +846,16 @@ main {
   .legacy-home-service-grid,
   .modern-process-grid,
   .modern-quick-visuals__grid,
+  .modern-knowledge__grid,
   .modern-guide__layout,
   .modern-guide__scenarios,
   .modern-safety-strip {
     grid-template-columns: 1fr;
+  }
+
+  .modern-section-head--row {
+    grid-template-columns: 1fr;
+    align-items: start;
   }
 
   .modern-service-card {
