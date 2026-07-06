@@ -43,9 +43,9 @@ const faqs = [
 
 export function FAQ() {
   return (
-    <div className="grid gap-4">
+    <div className="modern-faq-list grid gap-4">
       {faqs.map((faq) => (
-        <details key={faq.q} className="rounded-3xl bg-white p-5 comic-border">
+        <details key={faq.q} className="modern-faq-item rounded-3xl bg-white p-5 comic-border">
           <summary className="cursor-pointer text-lg font-black text-brand-dark">{faq.q}</summary>
           <p className="mt-3 text-sm leading-7 text-slate-600">{faq.a}</p>
         </details>

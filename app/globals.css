@@ -2609,3 +2609,302 @@ footer.bg-white a:hover {
     font-size: 0.72rem;
   }
 }
+
+/* Preview theme: sync subpages with the professional blue-gold direction. */
+.modern-subpage {
+  position: relative;
+  overflow: hidden;
+  min-height: 72vh;
+  background:
+    radial-gradient(circle at 7% 10%, rgba(242, 184, 75, 0.16), transparent 24%),
+    radial-gradient(circle at 92% 3%, rgba(47, 174, 210, 0.17), transparent 30%),
+    linear-gradient(180deg, #f7fbfd 0%, #ffffff 48%, #f7fbfd 100%);
+}
+
+.modern-subpage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(110deg, rgba(255, 255, 255, 0.74), transparent 46%),
+    url("/assets/ui/kf-hero-banner.png") center top / cover no-repeat;
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.modern-subpage > * {
+  position: relative;
+  z-index: 1;
+}
+
+.modern-subpage .comic-border {
+  border: 1px solid rgba(11, 79, 108, 0.16);
+  box-shadow: var(--kf-pro-shadow);
+}
+
+.modern-contact-card,
+.modern-contact-form,
+.modern-faq-item,
+.modern-process-step,
+.modern-process-note {
+  border-radius: 22px;
+  background:
+    linear-gradient(#fff, #fff) padding-box,
+    linear-gradient(135deg, rgba(47, 174, 210, 0.5), rgba(242, 184, 75, 0.45)) border-box;
+}
+
+.modern-contact-card p,
+.modern-contact-form label,
+.modern-faq-item summary,
+.modern-process-step h3,
+.modern-process-note h2 {
+  color: var(--kf-pro-ink) !important;
+}
+
+.modern-contact-card a,
+.modern-contact-form button,
+.modern-process-step svg,
+.modern-checklist-card h3 {
+  color: var(--kf-pro-blue) !important;
+}
+
+.modern-contact-form input,
+.modern-contact-form select,
+.modern-contact-form textarea {
+  border: 1px solid rgba(11, 79, 108, 0.22) !important;
+  border-radius: 14px !important;
+  background: #fbfdfe;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.modern-contact-form input:focus,
+.modern-contact-form select:focus,
+.modern-contact-form textarea:focus {
+  border-color: var(--kf-pro-blue-2) !important;
+  box-shadow: 0 0 0 4px rgba(47, 174, 210, 0.14);
+}
+
+.modern-contact-form button {
+  border: 0 !important;
+  background: linear-gradient(135deg, var(--kf-pro-gold), #ffd77a) !important;
+  box-shadow: 0 14px 30px rgba(242, 184, 75, 0.22);
+}
+
+.modern-faq-list {
+  gap: 18px;
+}
+
+.modern-faq-item {
+  border-radius: 18px !important;
+  padding: 22px 24px !important;
+}
+
+.modern-faq-item summary {
+  list-style: none;
+}
+
+.modern-faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.modern-faq-item summary::before {
+  content: "Q";
+  display: inline-flex;
+  width: 32px;
+  height: 32px;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--kf-pro-blue), var(--kf-pro-blue-2));
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+.modern-process-page {
+  background:
+    radial-gradient(circle at 15% 8%, rgba(242, 184, 75, 0.14), transparent 25%),
+    linear-gradient(180deg, #f7fbfd, #ffffff);
+}
+
+.modern-process-step {
+  min-height: 255px;
+}
+
+.modern-process-step span {
+  background: var(--kf-pro-gold-soft) !important;
+  color: #72520b !important;
+}
+
+.modern-process-note {
+  border: 1px solid rgba(11, 79, 108, 0.14);
+}
+
+.modern-checklist-card {
+  border-color: rgba(11, 79, 108, 0.12) !important;
+  background: linear-gradient(180deg, #ffffff, #f2fbfe) !important;
+}
+
+.modern-safety-card {
+  background:
+    radial-gradient(circle at 86% 10%, rgba(242, 184, 75, 0.22), transparent 26%),
+    linear-gradient(135deg, var(--kf-pro-ink), var(--kf-pro-blue)) !important;
+}
+
+.legacy-service-page {
+  background: linear-gradient(180deg, #f7fbfd 0%, #ffffff 40%, #f7fbfd 100%);
+}
+
+.legacy-breadcrumbs {
+  position: relative;
+  overflow: hidden;
+  padding: 78px 0 96px;
+  background:
+    linear-gradient(90deg, rgba(16, 43, 60, 0.82) 0%, rgba(11, 79, 108, 0.62) 44%, rgba(47, 174, 210, 0.22) 100%),
+    url("/assets/ui/kf-hero-banner.png") center / cover no-repeat;
+}
+
+.legacy-breadcrumbs::after {
+  content: "";
+  position: absolute;
+  inset: auto -6% -90px -6%;
+  height: 160px;
+  background: linear-gradient(176deg, rgba(255, 255, 255, 0), #f7fbfd 64%);
+  pointer-events: none;
+}
+
+.legacy-breadcrumbs .legacy-page-width {
+  position: relative;
+  z-index: 1;
+}
+
+.legacy-breadcrumbs nav {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.legacy-breadcrumbs__title {
+  width: min(100%, 720px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 26px;
+  background: rgba(255, 255, 255, 0.12);
+  padding: 24px;
+  backdrop-filter: blur(10px);
+}
+
+.legacy-breadcrumbs__title img {
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 70% 18%, rgba(242, 184, 75, 0.32), transparent 34%),
+    linear-gradient(135deg, var(--kf-pro-blue), var(--kf-pro-sky));
+  padding: 8px;
+}
+
+.legacy-breadcrumbs h1 {
+  letter-spacing: 0.02em;
+}
+
+.legacy-intermediate {
+  padding-top: 42px;
+  background: transparent;
+}
+
+.legacy-process,
+.legacy-info-panel,
+.legacy-interest,
+.legacy-service-cta {
+  border: 1px solid rgba(11, 79, 108, 0.14);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: var(--kf-pro-shadow);
+}
+
+.legacy-process__title,
+.legacy-info-panel h2,
+.legacy-interest h2 {
+  background: linear-gradient(135deg, var(--kf-pro-blue), var(--kf-pro-sky));
+}
+
+.legacy-process__title p {
+  color: #fff7d6;
+}
+
+.legacy-process__grid {
+  background: linear-gradient(180deg, #ffffff, #f4fbfd);
+}
+
+.legacy-process__grid strong,
+.legacy-info-panel__subtitle {
+  color: var(--kf-pro-blue-2);
+}
+
+.legacy-process__grid img {
+  width: 170px;
+  height: 126px;
+}
+
+.legacy-info-panel {
+  overflow: hidden;
+}
+
+.legacy-info-panel li,
+.legacy-interest li {
+  color: #4d6069;
+}
+
+.legacy-info-panel li::before,
+.legacy-interest li::before {
+  background: var(--kf-pro-gold);
+  box-shadow: 0 0 0 4px rgba(242, 184, 75, 0.14);
+}
+
+.legacy-interest {
+  background:
+    radial-gradient(circle at 86% 18%, rgba(242, 184, 75, 0.12), transparent 24%),
+    #fff;
+}
+
+.legacy-service-cta {
+  background:
+    radial-gradient(circle at 88% 12%, rgba(242, 184, 75, 0.22), transparent 28%),
+    linear-gradient(135deg, var(--kf-pro-blue), var(--kf-pro-blue-2));
+}
+
+.legacy-service-cta a:first-child {
+  background: linear-gradient(135deg, var(--kf-pro-gold), #ffd77a);
+  color: var(--kf-pro-ink);
+}
+
+.legacy-service-cta a:last-child {
+  border: 1px solid rgba(255, 255, 255, 0.36);
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+@media (max-width: 980px) {
+  .legacy-breadcrumbs {
+    padding: 52px 0 74px;
+  }
+
+  .legacy-breadcrumbs__title {
+    display: grid;
+    justify-items: start;
+    gap: 14px;
+    padding: 20px;
+  }
+
+  .legacy-breadcrumbs h1 {
+    font-size: clamp(2rem, 12vw, 3.2rem);
+  }
+
+  .legacy-process__grid {
+    gap: 22px;
+  }
+
+  .legacy-process__grid article + article::before {
+    display: none;
+  }
+
+  .legacy-detail-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -11,7 +11,7 @@ export const metadata = createMetadata({
 
 export default function ProcessPage() {
   return (
-    <div className="blue-pattern px-4 py-16">
+    <div className="modern-subpage modern-process-page px-4 py-16">
       <section className="mx-auto max-w-6xl">
         <SectionTitle center title="借款流程" subtitle="一通電話先確認方向，現場清楚說明條件與契約內容。" />
         <div className="mt-10">
@@ -19,7 +19,7 @@ export default function ProcessPage() {
         </div>
       </section>
 
-      <section className="mx-auto mt-14 grid max-w-6xl gap-6 rounded-[28px] bg-white/95 p-6 shadow-soft md:grid-cols-[1fr_.9fr] md:p-8">
+      <section className="modern-process-note mx-auto mt-14 grid max-w-6xl gap-6 rounded-[28px] bg-white/95 p-6 shadow-soft md:grid-cols-[1fr_.9fr] md:p-8">
         <div>
           <h2 className="text-3xl font-black text-brand-dark">到店前可以先準備什麼？</h2>
           <p className="mt-3 leading-8 text-slate-600">
@@ -27,7 +27,7 @@ export default function ProcessPage() {
           </p>
           <div className="mt-6 grid gap-4 sm:grid-cols-2">
             {documentChecklist.map((group) => (
-              <article key={group.title} className="rounded-2xl border border-sky-100 bg-sky-50/60 p-5">
+              <article key={group.title} className="modern-checklist-card rounded-2xl border border-sky-100 bg-sky-50/60 p-5">
                 <h3 className="font-black text-brand-deep">{group.title}</h3>
                 <ul className="mt-3 list-disc space-y-1 pl-5 text-sm font-bold leading-7 text-slate-600">
                   {group.items.map((item) => (
@@ -38,7 +38,7 @@ export default function ProcessPage() {
             ))}
           </div>
         </div>
-        <div className="rounded-[24px] bg-brand-dark p-6 text-white">
+        <div className="modern-safety-card rounded-[24px] bg-brand-dark p-6 text-white">
           <h2 className="text-2xl font-black">諮詢前的注意事項</h2>
           <div className="mt-5 grid gap-3">
             {safetyNotes.map((note) => (

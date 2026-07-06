@@ -61,7 +61,7 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={submit} className="grid gap-4 rounded-[28px] bg-white p-5 comic-border md:p-7">
+    <form onSubmit={submit} className="modern-contact-form grid gap-4 rounded-[28px] bg-white p-5 comic-border md:p-7">
       <label className="hidden">
         website
         <input value={form.website} onChange={(event) => update("website", event.target.value)} tabIndex={-1} autoComplete="off" />

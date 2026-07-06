@@ -11,11 +11,11 @@ export const metadata = createMetadata({
 
 export default function ContactPage() {
   return (
-    <section className="grid-paper px-4 py-16">
+    <section className="modern-subpage modern-contact-page px-4 py-16">
       <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-[.85fr_1.15fr] md:items-start">
         <div>
           <SectionTitle title="聯絡國豐當舖" subtitle="若您有汽車借款、房屋二胎、支票貼現或工商融資需求，可先來電確認。" />
-          <div className="mt-8 rounded-[28px] bg-white p-6 comic-border">
+          <div className="modern-contact-card mt-8 rounded-[28px] bg-white p-6 comic-border">
             <p className="font-black text-brand-dark">電話</p>
             <a href={`tel:${siteConfig.phone}`} className="mt-2 inline-flex text-2xl font-black text-brand-blue">
               {siteConfig.phone}

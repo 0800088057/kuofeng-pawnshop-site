@@ -10,7 +10,7 @@ export const metadata = createMetadata({
 
 export default function FAQPage() {
   return (
-    <section className="grid-paper px-4 py-16">
+    <section className="modern-subpage px-4 py-16">
       <div className="mx-auto max-w-4xl">
         <SectionTitle center title="常見問題" subtitle="實際條件仍以現場評估、契約與法令規範為準。" />
         <div className="mt-10">

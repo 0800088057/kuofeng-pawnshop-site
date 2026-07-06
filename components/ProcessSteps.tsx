@@ -25,11 +25,11 @@ const steps = [
 
 export function ProcessSteps() {
   return (
-    <div className="grid gap-5 md:grid-cols-4">
+    <div className="modern-process-steps grid gap-5 md:grid-cols-4">
       {steps.map((step, index) => {
         const Icon = step.icon;
         return (
-          <article key={step.title} className="rounded-[28px] bg-white p-5 comic-border">
+          <article key={step.title} className="modern-process-step rounded-[28px] bg-white p-5 comic-border">
             <div className="flex items-center gap-3">
               <span className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-yellow text-lg font-black text-brand-dark">
                 {index + 1}
