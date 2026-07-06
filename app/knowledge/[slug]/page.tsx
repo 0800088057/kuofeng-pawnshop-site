@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { MessageCircle, Phone } from "lucide-react";
 import { articles } from "@/data/articles";
 import { siteConfig } from "@/data/site";
 import { createMetadata } from "@/lib/metadata";
@@ -164,16 +165,26 @@ export default async function KnowledgeArticlePage({ params }: PageProps) {
           </section>
 
           <section className="knowledge-cta">
-            <Image src={article.ctaImage.src} alt={article.ctaImage.alt} width={article.ctaImage.width} height={article.ctaImage.height} />
             <div>
+              <p className="knowledge-cta__eyebrow">Need help?</p>
               <h2>想先確認是否適合評估？</h2>
-              <p>可先準備行照與雙證件，透過電話或 LINE 說明車況與需求，由國豐當舖協助確認可評估方向。</p>
-              <div>
-                <a href={`tel:${siteConfig.phone}`}>{siteConfig.phone}</a>
-                <a href={siteConfig.lineUrl}>加入 LINE 諮詢</a>
+              <p>可先準備行照、雙證件或相關資料，透過電話或 LINE 說明車況與需求，由國豐當舖協助確認可評估方向。</p>
+              <div className="knowledge-cta__actions">
+                <a href={`tel:${siteConfig.phone}`}>
+                  <Phone className="h-5 w-5" />
+                  {siteConfig.phone}
+                </a>
+                <a href={siteConfig.lineUrl}>
+                  <MessageCircle className="h-5 w-5" />
+                  加入 LINE 諮詢
+                </a>
                 <Link href="/contact">填寫線上表單</Link>
               </div>
             </div>
+            <Link href={siteConfig.lineUrl} className="knowledge-cta__qr" aria-label={`加入國豐當舖 LINE ${siteConfig.lineId}`}>
+              <Image src={siteConfig.lineQrImage} alt={`國豐當舖 LINE ${siteConfig.lineId}`} width={180} height={180} />
+              <span>LINE {siteConfig.lineId}</span>
+            </Link>
           </section>
         </div>
       </div>

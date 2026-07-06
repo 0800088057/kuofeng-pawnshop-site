@@ -5,8 +5,8 @@ import { navigation, siteConfig } from "@/data/site";
 
 export function Header() {
   return (
-    <header className="fixed left-0 top-0 z-50 h-[78px] w-full bg-white shadow-[0_2px_10px_rgba(0,0,0,.08)]">
-      <div className="mx-auto flex h-full max-w-[1180px] items-center justify-between px-4">
+    <header className="kf-site-header fixed left-0 top-0 z-50 h-[78px] w-full bg-white shadow-[0_2px_10px_rgba(0,0,0,.08)]">
+      <div className="mx-auto flex h-full max-w-[1240px] items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-3" aria-label="回到首頁">
           <Image
             src="/assets/legacy-web02/logo.png"
@@ -18,12 +18,12 @@ export function Header() {
           />
         </Link>
 
-        <nav className="hidden items-center gap-5 lg:flex" aria-label="主要導覽">
+        <nav className="kf-main-nav hidden items-center gap-2 lg:flex" aria-label="主要導覽">
           {navigation.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="text-[14px] font-bold tracking-wide text-slate-600 transition hover:text-brand-blue"
+              className="rounded-full px-3 py-2 text-[13px] font-black tracking-wide text-slate-600 transition hover:bg-sky-50 hover:text-brand-blue"
             >
               {item.label}
             </Link>
@@ -34,14 +34,15 @@ export function Header() {
           <a
             href={`tel:${siteConfig.phone}`}
             aria-label={`撥打電話 ${siteConfig.phone}`}
-            className="flex h-[34px] w-[34px] items-center justify-center rounded-full border border-slate-300 text-slate-500 transition hover:border-brand-blue hover:text-brand-blue"
+            className="kf-header-phone flex items-center gap-2 rounded-full border border-slate-300 px-4 py-2 text-sm font-black text-slate-600 transition hover:border-brand-blue hover:text-brand-blue"
           >
             <Phone className="h-4 w-4" />
+            <span>{siteConfig.phone}</span>
           </a>
           <a
             href={siteConfig.lineUrl}
             aria-label="LINE 諮詢"
-            className="flex h-[34px] w-[34px] items-center justify-center rounded-full border border-slate-300 text-slate-500 transition hover:border-brand-blue hover:text-brand-blue"
+            className="flex h-[38px] w-[38px] items-center justify-center rounded-full border border-slate-300 text-slate-500 transition hover:border-brand-blue hover:text-brand-blue"
           >
             <MessageCircle className="h-4 w-4" />
           </a>

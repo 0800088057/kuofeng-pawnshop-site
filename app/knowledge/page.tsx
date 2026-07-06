@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowRight, BookOpenCheck, ShieldCheck } from "lucide-react";
 import { articles } from "@/data/articles";
 import { createMetadata } from "@/lib/metadata";
 
@@ -11,12 +12,18 @@ export const metadata = createMetadata({
 
 export default function KnowledgePage() {
   return (
-    <div className="knowledge-page">
-      <section className="knowledge-hero">
+    <div className="knowledge-page modern-knowledge-index">
+      <section className="knowledge-hero modern-index-hero">
         <div className="legacy-page-width">
           <p className="knowledge-eyebrow">Knowledge</p>
           <h1>當舖知識庫</h1>
           <p>申辦前先看懂文件、流程、費用與注意事項。實際條件仍以現場評估與契約為準。</p>
+          <div className="modern-index-hero__badges">
+            <span><BookOpenCheck className="h-4 w-4" /> 文件流程</span>
+            <span><ShieldCheck className="h-4 w-4" /> 合規提醒</span>
+            <span>汽車借款</span>
+            <span>房屋二胎</span>
+          </div>
         </div>
       </section>
 
@@ -30,6 +37,10 @@ export default function KnowledgePage() {
             </div>
             <h2>{article.title}</h2>
             <p>{article.description}</p>
+            <strong>
+              閱讀文章
+              <ArrowRight className="h-4 w-4" />
+            </strong>
           </Link>
         ))}
       </section>

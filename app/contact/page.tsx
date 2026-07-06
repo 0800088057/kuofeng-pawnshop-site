@@ -2,6 +2,7 @@ import { ContactForm } from "@/components/ContactForm";
 import { SectionTitle } from "@/components/SectionTitle";
 import { siteConfig } from "@/data/site";
 import { createMetadata } from "@/lib/metadata";
+import Image from "next/image";
 
 export const metadata = createMetadata({
   title: "聯絡我們",
@@ -14,7 +15,7 @@ export default function ContactPage() {
     <section className="modern-subpage modern-contact-page px-4 py-16">
       <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-[.85fr_1.15fr] md:items-start">
         <div>
-          <SectionTitle title="聯絡國豐當舖" subtitle="若您有汽車借款、房屋二胎、支票貼現或工商融資需求，可先來電確認。" />
+          <SectionTitle as="h1" title="聯絡國豐當舖" subtitle="若您有汽車借款、房屋二胎、支票貼現或工商融資需求，可先來電確認。" />
           <div className="modern-contact-card mt-8 rounded-[28px] bg-white p-6 comic-border">
             <p className="font-black text-brand-dark">電話</p>
             <a href={`tel:${siteConfig.phone}`} className="mt-2 inline-flex text-2xl font-black text-brand-blue">
@@ -26,9 +27,21 @@ export default function ContactPage() {
             <p className="mt-2 leading-7 text-slate-600">{siteConfig.openingHours}</p>
             <p className="mt-6 font-black text-brand-dark">統一編號</p>
             <p className="mt-2 leading-7 text-slate-600">{siteConfig.taxId}</p>
+            <a href={siteConfig.lineUrl} className="modern-contact-card__line mt-8 grid justify-items-center gap-3 rounded-3xl bg-sky-50 p-5 text-center font-black text-brand-deep">
+              <Image src={siteConfig.lineQrImage} alt={`國豐當舖 LINE ${siteConfig.lineId}`} width={160} height={160} className="rounded-2xl bg-white" />
+              LINE {siteConfig.lineId}
+            </a>
           </div>
         </div>
         <ContactForm />
+      </div>
+      <div className="mx-auto mt-10 max-w-6xl overflow-hidden rounded-[28px] bg-white shadow-soft ring-1 ring-sky-100">
+        <iframe
+          title="國豐當舖地圖"
+          src="https://www.google.com/maps?q=%E5%8F%B0%E5%8C%97%E5%B8%82%E5%A4%A7%E5%90%8C%E5%8D%80%E6%B0%91%E6%97%8F%E8%A5%BF%E8%B7%AF78%E8%99%9F1%E6%A8%93&output=embed"
+          loading="lazy"
+          className="h-[320px] w-full border-0"
+        />
       </div>
     </section>
   );

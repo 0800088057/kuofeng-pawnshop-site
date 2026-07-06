@@ -42,11 +42,21 @@ export default async function ServicePage({ params }: PageProps) {
             <Image src={service.image} alt="" width={301} height={221} />
             <h1>{service.title}</h1>
           </div>
+          <p className="legacy-breadcrumbs__desc">{service.description}</p>
         </div>
       </section>
 
       <section className="legacy-intermediate">
         <div className="legacy-page-width">
+          <div className="service-summary-grid">
+            {service.points.map((point) => (
+              <article key={point}>
+                <span>{service.title}</span>
+                <strong>{point}</strong>
+              </article>
+            ))}
+          </div>
+
           <div className="legacy-process">
             <div className="legacy-process__title">
               <h2>作業流程</h2>

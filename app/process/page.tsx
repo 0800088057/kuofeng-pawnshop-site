@@ -13,7 +13,7 @@ export default function ProcessPage() {
   return (
     <div className="modern-subpage modern-process-page px-4 py-16">
       <section className="mx-auto max-w-6xl">
-        <SectionTitle center title="借款流程" subtitle="一通電話先確認方向，現場清楚說明條件與契約內容。" />
+        <SectionTitle as="h1" center title="借款流程" subtitle="一通電話先確認方向，現場清楚說明條件與契約內容。" />
         <div className="mt-10">
           <ProcessSteps />
         </div>
