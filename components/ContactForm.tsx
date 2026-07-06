@@ -67,7 +67,7 @@ export function ContactForm() {
         <input value={form.website} onChange={(event) => update("website", event.target.value)} tabIndex={-1} autoComplete="off" />
       </label>
       <Field label="姓名" value={form.name} error={errors.name} onChange={(value) => update("name", value)} />
-      <Field label="電話" value={form.phone} error={errors.phone} onChange={(value) => update("phone", value)} placeholder="02-2599-3130 或 0912345678" />
+      <Field label="電話" value={form.phone} error={errors.phone} onChange={(value) => update("phone", value)} placeholder="02-2599-6222 或 0912345678" />
       <label className="grid gap-2 text-sm font-black text-brand-dark">
         需求項目
         <select value={form.service} onChange={(event) => update("service", event.target.value)} className="h-12 rounded-2xl border-2 border-brand-blue/40 px-4 text-base outline-none focus:border-brand-blue">

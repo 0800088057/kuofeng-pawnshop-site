@@ -5,7 +5,7 @@ import { createMetadata } from "@/lib/metadata";
 
 export const metadata = createMetadata({
   title: "聯絡我們",
-  description: "聯絡國豐當舖，地址台北市大同區民族西路78號1樓，電話 02-2599-3130。",
+  description: "聯絡國豐當舖，地址台北市大同區民族西路78號1樓，電話 02-2599-6222。",
   path: "/contact",
 });
 
