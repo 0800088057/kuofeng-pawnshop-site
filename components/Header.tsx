@@ -36,7 +36,7 @@ export function Header() {
             priority
           />
           <span className="relative flex items-baseline gap-1.5 whitespace-nowrap leading-none">
-            <span className="text-[21px] font-black tracking-[-.04em] text-slate-400 md:text-[24px]">KF</span>
+            <span className="text-[21px] font-black tracking-[-.04em] text-[#f2b84b] drop-shadow-[0_1px_0_rgba(114,82,11,.2)] md:text-[24px]">KF</span>
             <span className="text-[18px] font-black tracking-[-.03em] text-brand-blue md:text-[21px]">國豐當舖</span>
             <span className="absolute -bottom-2 left-[34px] h-[3px] w-[72px] rounded-full bg-gradient-to-r from-brand-blue via-sky-300 to-transparent md:left-[40px] md:w-[84px]" />
           </span>
