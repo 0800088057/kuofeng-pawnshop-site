@@ -42,7 +42,7 @@ export function Header() {
           <a
             href={siteConfig.lineUrl}
             aria-label="LINE 諮詢"
-            className="flex h-[38px] w-[38px] items-center justify-center rounded-full border border-slate-300 text-slate-500 transition hover:border-brand-blue hover:text-brand-blue"
+            className="kf-header-line flex h-[38px] w-[38px] items-center justify-center rounded-full border transition"
           >
             <MessageCircle className="h-4 w-4" />
           </a>

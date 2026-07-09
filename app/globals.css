@@ -6,6 +6,8 @@
 
 :root {
   color-scheme: light;
+  --line-official-green: #06c755;
+  --line-official-green-dark: #05a648;
 }
 
 * {
@@ -31,6 +33,18 @@ svg {
 
 main {
   padding-top: 78px;
+}
+
+.kf-header-line {
+  border-color: rgba(6, 199, 85, 0.42);
+  background: rgba(6, 199, 85, 0.08);
+  color: var(--line-official-green);
+}
+
+.kf-header-line:hover {
+  border-color: var(--line-official-green);
+  background: var(--line-official-green);
+  color: #fff;
 }
 
 .grid-paper {
@@ -758,7 +772,11 @@ main {
   display: grid;
   justify-items: center;
   gap: 10px;
-  color: var(--kf-deep);
+  border: 1px solid rgba(6, 199, 85, 0.24);
+  border-radius: 22px;
+  background: rgba(6, 199, 85, 0.08);
+  padding: 18px;
+  color: var(--line-official-green-dark);
   font-weight: 900;
 }
 
@@ -2525,7 +2543,7 @@ footer.bg-white a:hover {
 }
 
 .modern-floating-cta a:nth-child(3) {
-  background: linear-gradient(135deg, #06c755, #11a846);
+  background: linear-gradient(135deg, var(--line-official-green), var(--line-official-green-dark));
 }
 
 .knowledge-hero {
@@ -2556,7 +2574,7 @@ footer.bg-white a:hover {
 }
 
 .knowledge-cta a:nth-child(2) {
-  background: #06c755;
+  background: var(--line-official-green);
 }
 
 .knowledge-cta a:nth-child(3) {
@@ -3144,11 +3162,11 @@ footer.bg-white a:hover {
   display: grid !important;
   justify-items: center;
   gap: 10px;
-  border: 1px solid rgba(11, 79, 108, 0.12) !important;
+  border: 1px solid rgba(6, 199, 85, 0.24) !important;
   border-radius: 22px !important;
-  background: #fff !important;
+  background: rgba(6, 199, 85, 0.08) !important;
   padding: 18px !important;
-  color: var(--kf-pro-blue) !important;
+  color: var(--line-official-green-dark) !important;
   box-shadow: 0 18px 38px rgba(12, 58, 79, 0.08);
 }
 
@@ -3372,7 +3390,7 @@ footer.bg-white a:hover {
 }
 
 .legacy-service-cta a:nth-child(2) {
-  background: #0f8f63;
+  background: var(--line-official-green);
 }
 
 .legacy-service-cta a:nth-child(3) {
@@ -3403,7 +3421,9 @@ footer.bg-white a:hover {
 }
 
 .modern-contact-card__line {
-  border: 1px solid rgba(11, 79, 108, 0.12);
+  border: 1px solid rgba(6, 199, 85, 0.24) !important;
+  background: rgba(6, 199, 85, 0.08) !important;
+  color: var(--line-official-green-dark) !important;
 }
 
 .modern-contact-page iframe {
@@ -3482,7 +3502,7 @@ footer.bg-white a:hover {
 }
 
 .modern-contact-page__quick a:nth-child(2) {
-  background: #0f8f63;
+  background: var(--line-official-green);
 }
 
 .modern-contact-card__notes p {
