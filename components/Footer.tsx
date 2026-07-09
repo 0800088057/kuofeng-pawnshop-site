@@ -8,7 +8,19 @@ export function Footer() {
     <footer className="kf-footer bg-white">
       <div className="mx-auto grid max-w-[1180px] gap-8 px-4 py-10 md:grid-cols-[1.15fr_.85fr_.85fr]">
         <div>
-          <Image src="/assets/legacy-web02/logo.png" alt="國豐當舖" width={265} height={50} className="h-auto w-[178px] rounded bg-white p-2" />
+          <Link href="/" className="inline-flex items-center gap-3 rounded-2xl bg-white/95 px-3 py-2 shadow-sm" aria-label="回到國豐當舖首頁">
+            <Image
+              src="/assets/legacy-web02/i25.png"
+              alt=""
+              width={72}
+              height={53}
+              className="h-11 w-auto object-contain drop-shadow-[0_4px_10px_rgba(18,132,171,.22)]"
+            />
+            <span className="relative flex whitespace-nowrap leading-none">
+              <span className="text-[20px] font-black tracking-[-.03em] text-brand-blue">國豐當舖</span>
+              <span className="absolute -bottom-2 left-0 h-[3px] w-[82px] rounded-full bg-gradient-to-r from-brand-blue via-sky-300 to-[#f2b84b]" />
+            </span>
+          </Link>
           <p className="mt-4 max-w-md text-sm font-bold leading-7">
             國豐當舖位於台北市大同區，提供汽車借款、房屋二胎、支票借款、工商融資與萬物質借諮詢。實際條件、利息與費用以現場評估及契約為準。
           </p>
