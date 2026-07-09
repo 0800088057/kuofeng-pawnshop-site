@@ -3086,6 +3086,195 @@ footer.bg-white a:hover {
   font-weight: 900;
 }
 
+.service-disclosure {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  gap: 26px;
+  align-items: stretch;
+  margin: 26px 0 60px;
+  border: 1px solid rgba(11, 79, 108, 0.12);
+  border-radius: 28px;
+  background:
+    linear-gradient(135deg, rgba(239, 249, 252, 0.94), rgba(255, 255, 255, 0.96)),
+    radial-gradient(circle at 94% 8%, rgba(44, 162, 207, 0.14), transparent 34%);
+  padding: 32px;
+  box-shadow: 0 18px 44px rgba(12, 58, 79, 0.08);
+}
+
+.service-disclosure__eyebrow,
+.service-section-heading p {
+  margin: 0 0 10px;
+  color: var(--kf-pro-blue-2);
+  font-size: 0.82rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.service-disclosure h2,
+.service-section-heading h2 {
+  margin: 0;
+  color: var(--kf-pro-ink);
+  font-size: clamp(1.9rem, 3vw, 3rem);
+  font-weight: 900;
+  line-height: 1.18;
+  letter-spacing: 0;
+}
+
+.service-disclosure > div:first-child > p:last-child {
+  margin: 18px 0 0;
+  color: #526876;
+  font-size: 1.02rem;
+  font-weight: 700;
+  line-height: 1.9;
+}
+
+.service-disclosure__cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.service-disclosure__cards article {
+  border: 1px solid rgba(11, 79, 108, 0.12);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.86);
+  padding: 22px;
+  box-shadow: 0 14px 30px rgba(12, 58, 79, 0.06);
+}
+
+.service-disclosure__cards svg {
+  color: var(--kf-pro-blue-2);
+}
+
+.service-disclosure__cards h3 {
+  margin: 14px 0 10px;
+  color: var(--kf-pro-ink);
+  font-size: 1.14rem;
+  font-weight: 900;
+}
+
+.service-disclosure__cards p {
+  margin: 0;
+  color: #60717a;
+  font-weight: 700;
+  line-height: 1.8;
+}
+
+.service-situations,
+.service-faq {
+  margin: 0 0 64px;
+}
+
+.service-section-heading {
+  margin-bottom: 24px;
+}
+
+.service-situation-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.service-situation-grid article {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+  border: 1px solid rgba(11, 79, 108, 0.12);
+  border-radius: 20px;
+  background: #fff;
+  padding: 20px;
+  box-shadow: 0 12px 28px rgba(12, 58, 79, 0.06);
+}
+
+.service-situation-grid span {
+  width: 12px;
+  height: 12px;
+  margin-top: 8px;
+  border-radius: 999px;
+  background: var(--kf-pro-blue-2);
+  box-shadow: 0 0 0 7px rgba(44, 162, 207, 0.12);
+}
+
+.service-situation-grid p {
+  margin: 0;
+  color: #4f6069;
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.75;
+}
+
+.service-faq__list {
+  display: grid;
+  gap: 14px;
+}
+
+.service-faq details {
+  border: 1px solid rgba(11, 79, 108, 0.14);
+  border-radius: 20px;
+  background: #fff;
+  padding: 0;
+  box-shadow: 0 12px 28px rgba(12, 58, 79, 0.05);
+  overflow: hidden;
+}
+
+.service-faq summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 20px 22px;
+  color: var(--kf-pro-blue);
+  font-size: 1.04rem;
+  font-weight: 900;
+}
+
+.service-faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.service-faq summary::before {
+  content: "Q";
+  display: inline-grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  margin-right: 10px;
+  border-radius: 999px;
+  background: var(--kf-pro-blue-2);
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 900;
+}
+
+.service-faq details[open] summary {
+  border-bottom: 1px solid rgba(11, 79, 108, 0.1);
+}
+
+.service-faq details p {
+  margin: 0;
+  padding: 18px 22px 22px 58px;
+  color: #526876;
+  font-weight: 700;
+  line-height: 1.9;
+}
+
+.legacy-service-cta a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.legacy-service-cta a:nth-child(2) {
+  background: #0f8f63;
+}
+
+.legacy-service-cta a:nth-child(3) {
+  background: #fff;
+  color: var(--kf-pro-blue);
+  border: 1px solid rgba(11, 79, 108, 0.16);
+}
+
 .legacy-breadcrumbs__desc {
   position: relative;
   z-index: 1;
@@ -3146,5 +3335,20 @@ footer.bg-white a:hover {
 
   .service-summary-grid {
     margin: -48px 0 24px;
+  }
+
+  .service-disclosure,
+  .service-disclosure__cards,
+  .service-situation-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-disclosure {
+    margin-bottom: 44px;
+    padding: 24px;
+  }
+
+  .service-faq details p {
+    padding-left: 22px;
   }
 }

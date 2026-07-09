@@ -1,7 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { CheckCircle2, MessageCircle, Phone, ShieldCheck } from "lucide-react";
 import { services } from "@/data/services";
+import { siteConfig } from "@/data/site";
 import { createMetadata } from "@/lib/metadata";
 
 type PageProps = {
@@ -57,6 +59,41 @@ export default async function ServicePage({ params }: PageProps) {
             ))}
           </div>
 
+          <section className="service-disclosure">
+            <div>
+              <p className="service-disclosure__eyebrow">Service Disclosure</p>
+              <h2>{service.title}服務說明</h2>
+              <p>{service.disclosure.summary}</p>
+            </div>
+            <div className="service-disclosure__cards">
+              <article>
+                <ShieldCheck className="h-6 w-6" />
+                <h3>文件準備</h3>
+                <p>{service.disclosure.documents}</p>
+              </article>
+              <article>
+                <CheckCircle2 className="h-6 w-6" />
+                <h3>費用與契約</h3>
+                <p>{service.disclosure.feeNotice}</p>
+              </article>
+            </div>
+          </section>
+
+          <section className="service-situations">
+            <div className="service-section-heading">
+              <p>Use Cases</p>
+              <h2>常見諮詢情境</h2>
+            </div>
+            <div className="service-situation-grid">
+              {service.situations.map((item) => (
+                <article key={item}>
+                  <span />
+                  <p>{item}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+
           <div className="legacy-process">
             <div className="legacy-process__title">
               <h2>作業流程</h2>
@@ -103,12 +140,34 @@ export default async function ServicePage({ params }: PageProps) {
             </div>
           </section>
 
+          <section className="service-faq">
+            <div className="service-section-heading">
+              <p>FAQ</p>
+              <h2>{service.title}常見問題</h2>
+            </div>
+            <div className="service-faq__list">
+              {service.faqs.map(([question, answer]) => (
+                <details key={question}>
+                  <summary>{question}</summary>
+                  <p>{answer}</p>
+                </details>
+              ))}
+            </div>
+          </section>
+
           <div className="legacy-service-cta">
             <h2>想了解{service.title}是否適合？</h2>
             <p>請先來電或留下資料，國豐當舖會依您的實際條件說明可評估方向。實際額度、利息、費用與結果以現場評估及契約為準。</p>
             <div>
-              <Link href="/contact">線上諮詢</Link>
-              <Link href="/">回首頁</Link>
+              <a href={`tel:${siteConfig.phone}`}>
+                <Phone className="h-5 w-5" />
+                {siteConfig.phone}
+              </a>
+              <a href={siteConfig.lineUrl}>
+                <MessageCircle className="h-5 w-5" />
+                LINE 諮詢
+              </a>
+              <Link href="/contact">填寫表單</Link>
             </div>
           </div>
         </div>
