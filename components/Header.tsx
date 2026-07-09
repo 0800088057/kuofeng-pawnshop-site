@@ -1,9 +1,28 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useRef } from "react";
 import { Menu, MessageCircle, Phone } from "lucide-react";
 import { navigation, siteConfig } from "@/data/site";
 
 export function Header() {
+  const pathname = usePathname();
+  const mobileMenuRef = useRef<HTMLDetailsElement>(null);
+
+  useEffect(() => {
+    if (mobileMenuRef.current) {
+      mobileMenuRef.current.open = false;
+    }
+  }, [pathname]);
+
+  const closeMobileMenu = () => {
+    if (mobileMenuRef.current) {
+      mobileMenuRef.current.open = false;
+    }
+  };
+
   return (
     <header className="kf-site-header fixed left-0 top-0 z-50 h-[78px] w-full bg-white shadow-[0_2px_10px_rgba(0,0,0,.08)]">
       <div className="mx-auto flex h-full max-w-[1240px] items-center justify-between px-4">
@@ -48,22 +67,35 @@ export function Header() {
           </a>
         </div>
 
-        <details className="relative lg:hidden">
+        <details ref={mobileMenuRef} className="relative lg:hidden">
           <summary className="flex h-12 w-12 cursor-pointer list-none items-center justify-center text-brand-deep">
             <Menu className="h-10 w-10" aria-hidden="true" />
           </summary>
           <div className="absolute right-0 top-14 w-[min(86vw,320px)] rounded-b-2xl bg-white p-3 shadow-soft ring-1 ring-slate-100">
             <nav className="grid gap-1" aria-label="行動版導覽">
               {navigation.map((item) => (
-                <Link key={item.href} href={item.href} className="rounded-xl px-4 py-3 text-base font-bold text-slate-700 hover:bg-sky-50">
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={closeMobileMenu}
+                  className="rounded-xl px-4 py-3 text-base font-bold text-slate-700 hover:bg-sky-50"
+                >
                   {item.label}
                 </Link>
               ))}
             </nav>
-            <a href={`tel:${siteConfig.phone}`} className="mt-3 flex items-center justify-center rounded-full bg-brand-blue px-4 py-3 text-sm font-black text-white">
+            <a
+              href={`tel:${siteConfig.phone}`}
+              onClick={closeMobileMenu}
+              className="mt-3 flex items-center justify-center rounded-full bg-brand-blue px-4 py-3 text-sm font-black text-white"
+            >
               {siteConfig.phone}
             </a>
-            <a href={siteConfig.lineUrl} className="kf-mobile-line mt-2 flex items-center justify-center gap-2 rounded-full px-4 py-3 text-sm font-black text-white">
+            <a
+              href={siteConfig.lineUrl}
+              onClick={closeMobileMenu}
+              className="kf-mobile-line mt-2 flex items-center justify-center gap-2 rounded-full px-4 py-3 text-sm font-black text-white"
+            >
               <MessageCircle className="h-4 w-4" />
               LINE 諮詢
             </a>
