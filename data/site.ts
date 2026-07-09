@@ -4,7 +4,7 @@ export const siteConfig = {
   taxId: "15092702",
   address: "台北市大同區民族西路78號1樓",
   phone: "02-2599-6222",
-  openingHours: "週一至週六 09:00-18:00",
+  openingHours: "週一至週五 09:00-18:00",
   description:
     "國豐當舖位於台北市大同區，提供汽機車借款、房屋二胎、支票貼現、工商融資與代償諮詢等服務，條件依現場評估與契約為準。",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://kuofeng.example.com",

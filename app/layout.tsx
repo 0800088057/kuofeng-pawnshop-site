@@ -29,7 +29,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       addressRegion: "台北市",
       addressCountry: "TW",
     },
-    openingHours: "Mo-Sa 09:00-18:00",
+    openingHours: "Mo-Fr 09:00-18:00",
     description: siteConfig.description,
   };
 
