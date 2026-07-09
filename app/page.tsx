@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Building2, CheckCircle2, Clock3, MapPin, Phone, ShieldCheck } from "lucide-react";
+import { ArrowRight, Building2, CheckCircle2, Clock3, MapPin, MessageCircle, Phone, ShieldCheck } from "lucide-react";
 import { articles } from "@/data/articles";
 import { documentChecklist, safetyNotes, scenarioGuides } from "@/data/content";
 import { siteConfig } from "@/data/site";
@@ -80,8 +80,12 @@ export default function HomePage() {
                 <Phone className="h-5 w-5" />
                 {siteConfig.phone}
               </a>
+              <a href={siteConfig.lineUrl}>
+                <MessageCircle className="h-5 w-5" />
+                LINE 諮詢
+              </a>
               <Link href="/contact">
-                線上諮詢
+                填寫表單
                 <ArrowRight className="h-5 w-5" />
               </Link>
             </div>

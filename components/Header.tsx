@@ -63,6 +63,10 @@ export function Header() {
             <a href={`tel:${siteConfig.phone}`} className="mt-3 flex items-center justify-center rounded-full bg-brand-blue px-4 py-3 text-sm font-black text-white">
               {siteConfig.phone}
             </a>
+            <a href={siteConfig.lineUrl} className="kf-mobile-line mt-2 flex items-center justify-center gap-2 rounded-full px-4 py-3 text-sm font-black text-white">
+              <MessageCircle className="h-4 w-4" />
+              LINE 諮詢
+            </a>
           </div>
         </details>
       </div>

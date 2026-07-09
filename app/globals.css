@@ -47,6 +47,10 @@ main {
   color: #fff;
 }
 
+.kf-mobile-line {
+  background: var(--line-official-green);
+}
+
 .grid-paper {
   background-image:
     linear-gradient(rgba(31, 156, 204, 0.09) 1px, transparent 1px),
@@ -2393,6 +2397,11 @@ footer.bg-white a:hover {
   background: linear-gradient(135deg, var(--kf-pro-blue), var(--kf-pro-blue-2));
 }
 
+.modern-hero__actions a:nth-child(2) {
+  background: var(--line-official-green);
+  color: #fff;
+}
+
 .modern-hero__actions a:last-child,
 .modern-section-link {
   background: #fff;
@@ -2706,6 +2715,17 @@ footer.bg-white a:hover {
   border: 0 !important;
   background: linear-gradient(135deg, var(--kf-pro-gold), #ffd77a) !important;
   box-shadow: 0 14px 30px rgba(242, 184, 75, 0.22);
+}
+
+.modern-contact-form__notice {
+  margin: 0;
+  border-radius: 16px;
+  background: #f4fbfd;
+  padding: 12px 14px;
+  color: #62737c;
+  font-size: 0.85rem;
+  font-weight: 700;
+  line-height: 1.75;
 }
 
 .modern-faq-list {

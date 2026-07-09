@@ -86,8 +86,11 @@ export function ContactForm() {
         {errors.message ? <span className="text-sm text-red-600">{errors.message}</span> : null}
       </label>
       <button type="submit" className="rounded-full bg-brand-yellow px-6 py-3 text-base font-black text-brand-dark comic-border">
-        送出諮詢
+        送出諮詢資料
       </button>
+      <p className="modern-contact-form__notice">
+        送出後僅作為諮詢聯繫與初步了解使用，不代表承作或借款結果；實際條件以現場評估與契約為準。
+      </p>
       {status ? <p className="rounded-2xl bg-sky-50 p-4 text-sm font-bold leading-7 text-brand-deep">{status}</p> : null}
     </form>
   );
