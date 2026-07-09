@@ -35,10 +35,9 @@ export function Header() {
             className="h-[42px] w-auto object-contain drop-shadow-[0_4px_10px_rgba(18,132,171,.22)] transition group-hover:scale-[1.03] md:h-[46px]"
             priority
           />
-          <span className="relative flex items-baseline gap-1.5 whitespace-nowrap leading-none">
-            <span className="text-[21px] font-black tracking-[-.04em] text-[#49626f] md:text-[24px]">KF</span>
+          <span className="relative flex items-baseline whitespace-nowrap leading-none">
             <span className="text-[18px] font-black tracking-[-.03em] text-brand-blue md:text-[21px]">國豐當舖</span>
-            <span className="absolute -bottom-2 left-[34px] h-[3px] w-[72px] rounded-full bg-gradient-to-r from-brand-blue via-sky-300 to-[#f2b84b] md:left-[40px] md:w-[84px]" />
+            <span className="absolute -bottom-2 left-0 h-[3px] w-[76px] rounded-full bg-gradient-to-r from-brand-blue via-sky-300 to-[#f2b84b] md:w-[88px]" />
           </span>
         </Link>
 
