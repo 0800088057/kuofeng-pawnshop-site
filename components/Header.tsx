@@ -26,15 +26,20 @@ export function Header() {
   return (
     <header className="kf-site-header fixed left-0 top-0 z-50 h-[78px] w-full bg-white shadow-[0_2px_10px_rgba(0,0,0,.08)]">
       <div className="mx-auto flex h-full max-w-[1240px] items-center justify-between px-4">
-        <Link href="/" className="flex items-center gap-3" aria-label="回到首頁">
+        <Link href="/" className="group flex items-center gap-2.5" aria-label="回到首頁">
           <Image
-            src="/assets/legacy-web02/logo.png"
-            alt="KF 國豐當舖"
-            width={265}
-            height={50}
-            className="h-auto w-[150px] md:w-[172px]"
+            src="/assets/legacy-web02/i25.png"
+            alt=""
+            width={72}
+            height={53}
+            className="h-[42px] w-auto object-contain drop-shadow-[0_4px_10px_rgba(18,132,171,.22)] transition group-hover:scale-[1.03] md:h-[46px]"
             priority
           />
+          <span className="relative flex items-baseline gap-1.5 whitespace-nowrap leading-none">
+            <span className="text-[21px] font-black tracking-[-.04em] text-slate-400 md:text-[24px]">KF</span>
+            <span className="text-[18px] font-black tracking-[-.03em] text-brand-blue md:text-[21px]">國豐當舖</span>
+            <span className="absolute -bottom-2 left-[34px] h-[3px] w-[72px] rounded-full bg-gradient-to-r from-brand-blue via-sky-300 to-transparent md:left-[40px] md:w-[84px]" />
+          </span>
         </Link>
 
         <nav className="kf-main-nav hidden items-center gap-2 lg:flex" aria-label="主要導覽">
