@@ -2960,6 +2960,56 @@ footer.bg-white a:hover {
   box-shadow: 0 12px 28px rgba(12, 58, 79, 0.06);
 }
 
+.knowledge-index-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: -44px;
+  position: relative;
+  z-index: 2;
+}
+
+.knowledge-index-summary article {
+  border: 1px solid rgba(11, 79, 108, 0.12);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.96);
+  padding: 22px;
+  box-shadow: var(--kf-pro-shadow);
+}
+
+.knowledge-index-summary strong {
+  display: block;
+  color: var(--kf-pro-blue);
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.knowledge-index-summary span {
+  display: block;
+  margin-top: 10px;
+  color: #546b78;
+  font-weight: 800;
+  line-height: 1.6;
+}
+
+.knowledge-topic-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.knowledge-topic-strip span {
+  border: 1px solid rgba(11, 79, 108, 0.14);
+  border-radius: 999px;
+  background: #fff;
+  padding: 9px 14px;
+  color: var(--kf-pro-blue);
+  font-size: 0.9rem;
+  font-weight: 900;
+}
+
 .modern-knowledge-index .knowledge-list {
   padding-top: 58px;
   padding-bottom: 92px;
@@ -2995,8 +3045,64 @@ footer.bg-white a:hover {
   object-fit: contain;
 }
 
+.knowledge-article__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.knowledge-article__meta span {
+  border: 1px solid rgba(11, 79, 108, 0.12);
+  border-radius: 999px;
+  background: #f4fbfd;
+  padding: 9px 13px;
+  color: var(--kf-pro-blue);
+  font-size: 0.88rem;
+  font-weight: 900;
+}
+
 .knowledge-inline-image {
   object-fit: contain;
+}
+
+.knowledge-related {
+  margin: 42px 0;
+  border-top: 1px solid rgba(11, 79, 108, 0.1);
+  padding-top: 32px;
+}
+
+.knowledge-related h2 {
+  margin-bottom: 18px;
+}
+
+.knowledge-related > div {
+  display: grid;
+  gap: 12px;
+}
+
+.knowledge-related a {
+  display: grid;
+  gap: 6px;
+  border: 1px solid rgba(11, 79, 108, 0.12);
+  border-radius: 18px;
+  background: #fff;
+  padding: 16px 18px;
+  text-decoration: none;
+  box-shadow: 0 10px 22px rgba(12, 58, 79, 0.05);
+}
+
+.knowledge-related a span {
+  color: var(--kf-pro-blue-2);
+  font-size: 0.82rem;
+  font-weight: 900;
+}
+
+.knowledge-related a strong {
+  color: var(--kf-pro-ink);
+  font-size: 1.02rem;
+  font-weight: 900;
+  line-height: 1.5;
 }
 
 .knowledge-cta {
@@ -3304,6 +3410,100 @@ footer.bg-white a:hover {
   filter: saturate(0.85);
 }
 
+.modern-faq-page__cards article,
+.modern-process-page__intro article {
+  border: 1px solid rgba(11, 79, 108, 0.12);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.94);
+  padding: 22px;
+  box-shadow: 0 14px 30px rgba(12, 58, 79, 0.06);
+}
+
+.modern-faq-page__cards svg,
+.modern-process-page__intro svg {
+  color: var(--kf-pro-blue-2);
+}
+
+.modern-faq-page__cards h2,
+.modern-process-page__intro h2 {
+  margin: 14px 0 8px;
+  color: var(--kf-pro-ink);
+  font-size: 1.12rem;
+  font-weight: 900;
+}
+
+.modern-faq-page__cards p,
+.modern-process-page__intro p {
+  margin: 0;
+  color: #5f7079;
+  font-weight: 700;
+  line-height: 1.75;
+}
+
+.modern-faq-page__cta {
+  display: flex;
+  justify-content: space-between;
+  gap: 22px;
+  align-items: center;
+  border: 1px solid rgba(11, 79, 108, 0.12);
+  border-radius: 28px;
+  background: #fff;
+  padding: 24px;
+  box-shadow: var(--kf-pro-shadow);
+}
+
+.modern-faq-page__cta h2 {
+  margin: 0;
+  color: var(--kf-pro-ink);
+  font-size: 1.45rem;
+  font-weight: 900;
+}
+
+.modern-faq-page__cta p {
+  margin: 8px 0 0;
+  color: #5f7079;
+  font-weight: 700;
+  line-height: 1.75;
+}
+
+.modern-faq-page__cta a,
+.modern-contact-page__quick a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 999px;
+  background: var(--kf-pro-blue);
+  padding: 13px 18px;
+  color: #fff;
+  font-weight: 900;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.modern-contact-page__quick a:nth-child(2) {
+  background: #0f8f63;
+}
+
+.modern-contact-card__notes p {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  border-radius: 18px;
+  background: #f4fbfd;
+  padding: 12px 14px;
+  color: #4f6069;
+  font-size: 0.94rem;
+  font-weight: 800;
+  line-height: 1.7;
+}
+
+.modern-contact-card__notes svg {
+  flex: 0 0 auto;
+  margin-top: 3px;
+  color: var(--kf-pro-blue-2);
+}
+
 @media (max-width: 1180px) {
   .kf-header-phone span {
     display: none;
@@ -3321,7 +3521,8 @@ footer.bg-white a:hover {
   }
 
   .knowledge-cta,
-  .service-summary-grid {
+  .service-summary-grid,
+  .knowledge-index-summary {
     grid-template-columns: 1fr;
   }
 
@@ -3350,5 +3551,18 @@ footer.bg-white a:hover {
 
   .service-faq details p {
     padding-left: 22px;
+  }
+
+  .knowledge-index-summary {
+    margin-top: -28px;
+  }
+
+  .modern-faq-page__cta {
+    display: grid;
+  }
+
+  .modern-faq-page__cta a,
+  .modern-contact-page__quick a {
+    width: 100%;
   }
 }

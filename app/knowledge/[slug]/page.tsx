@@ -30,6 +30,7 @@ export default async function KnowledgeArticlePage({ params }: PageProps) {
   const { slug } = await params;
   const article = articles.find((item) => item.slug === slug);
   if (!article) notFound();
+  const relatedArticles = articles.filter((item) => item.slug !== article.slug && item.category === article.category).slice(0, 3);
 
   const articleSchema = {
     "@context": "https://schema.org",
@@ -80,6 +81,11 @@ export default async function KnowledgeArticlePage({ params }: PageProps) {
         <h1>{article.title}</h1>
         <time dateTime={article.date}>最後更新：{article.date}</time>
         <Image className="knowledge-article__cover" src={article.cover.src} alt={article.cover.alt} width={article.cover.width} height={article.cover.height} priority />
+        <div className="knowledge-article__meta">
+          <span>主題：{article.category}</span>
+          <span>閱讀重點：文件、評估、費用與契約</span>
+          <span>內容定位：北部當舖諮詢情境</span>
+        </div>
         <p className="knowledge-article__lead">{article.excerpt}</p>
       </header>
 
@@ -163,6 +169,20 @@ export default async function KnowledgeArticlePage({ params }: PageProps) {
               ))}
             </ul>
           </section>
+
+          {relatedArticles.length > 0 ? (
+            <section className="knowledge-related">
+              <h2>延伸閱讀</h2>
+              <div>
+                {relatedArticles.map((related) => (
+                  <Link href={`/knowledge/${related.slug}`} key={related.slug}>
+                    <span>{related.category}</span>
+                    <strong>{related.title}</strong>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          ) : null}
 
           <section className="knowledge-cta">
             <div>

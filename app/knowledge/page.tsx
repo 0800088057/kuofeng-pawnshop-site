@@ -11,6 +11,8 @@ export const metadata = createMetadata({
 });
 
 export default function KnowledgePage() {
+  const categories = Array.from(new Set(articles.map((article) => article.category)));
+
   return (
     <div className="knowledge-page modern-knowledge-index">
       <section className="knowledge-hero modern-index-hero">
@@ -25,6 +27,30 @@ export default function KnowledgePage() {
             <span>房屋二胎</span>
           </div>
         </div>
+      </section>
+
+      <section className="legacy-page-width knowledge-index-summary">
+        <article>
+          <strong>{articles.length}</strong>
+          <span>篇已整理文章</span>
+        </article>
+        <article>
+          <strong>{categories.length}</strong>
+          <span>個主題分類</span>
+        </article>
+        <article>
+          <strong>GEO</strong>
+          <span>以北部服務情境規劃長尾內容</span>
+        </article>
+      </section>
+
+      <section className="legacy-page-width knowledge-topic-strip" aria-label="文章分類">
+        {categories.map((category) => (
+          <span key={category}>{category}</span>
+        ))}
+        <span>申辦文件</span>
+        <span>費用說明</span>
+        <span>流程安全</span>
       </section>
 
       <section className="legacy-page-width knowledge-list">

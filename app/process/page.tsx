@@ -2,6 +2,7 @@ import { ProcessSteps } from "@/components/ProcessSteps";
 import { SectionTitle } from "@/components/SectionTitle";
 import { documentChecklist, safetyNotes } from "@/data/content";
 import { createMetadata } from "@/lib/metadata";
+import { Clock3, FileCheck2, MessageCircle, ShieldCheck } from "lucide-react";
 
 export const metadata = createMetadata({
   title: "借款流程",
@@ -14,6 +15,20 @@ export default function ProcessPage() {
     <div className="modern-subpage modern-process-page px-4 py-16">
       <section className="mx-auto max-w-6xl">
         <SectionTitle as="h1" center title="借款流程" subtitle="一通電話先確認方向，現場清楚說明條件與契約內容。" />
+        <div className="modern-process-page__intro mt-10 grid gap-4 md:grid-cols-4">
+          {[
+            { title: "先問方向", desc: "不用一開始就決定辦理，先確認需求與物件狀況。", icon: MessageCircle },
+            { title: "文件盤點", desc: "依汽車、房屋、票據或物品類型確認應備資料。", icon: FileCheck2 },
+            { title: "現場說明", desc: "利息、倉棧費、期限與契約重點先看清楚。", icon: ShieldCheck },
+            { title: "依約辦理", desc: "資料齊全並完成評估與簽約後，才進入撥款流程。", icon: Clock3 },
+          ].map(({ title, desc, icon: Icon }) => (
+            <article key={title}>
+              <Icon className="h-7 w-7" />
+              <h2>{title}</h2>
+              <p>{desc}</p>
+            </article>
+          ))}
+        </div>
         <div className="mt-10">
           <ProcessSteps />
         </div>
