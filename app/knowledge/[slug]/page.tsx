@@ -64,10 +64,36 @@ export default async function KnowledgeArticlePage({ params }: PageProps) {
     })),
   };
 
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "首頁",
+        item: siteConfig.url,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "當舖知識庫",
+        item: new URL("/knowledge", siteConfig.url).toString(),
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: article.title,
+        item: new URL(`/knowledge/${article.slug}`, siteConfig.url).toString(),
+      },
+    ],
+  };
+
   return (
     <article className="knowledge-article">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
       <header className="knowledge-article__header legacy-page-width">
         <nav aria-label="麵包屑">
@@ -172,7 +198,7 @@ export default async function KnowledgeArticlePage({ params }: PageProps) {
 
           {article.relatedLinks?.length ? (
             <section className="knowledge-related">
-              <h2>相關服務</h2>
+              <h2>相關內容</h2>
               <div>
                 {article.relatedLinks.map((related) => (
                   <Link href={related.href} key={related.href}>
