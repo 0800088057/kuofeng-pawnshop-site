@@ -3202,6 +3202,45 @@ footer.bg-white a:hover {
   border-radius: 16px;
 }
 
+.service-knowledge-links {
+  margin: 56px 0;
+}
+
+.service-knowledge-links > div:last-child {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.service-knowledge-links a {
+  display: grid;
+  gap: 8px;
+  border: 1px solid rgba(11, 79, 108, 0.14);
+  border-radius: 18px;
+  background: #fff;
+  padding: 20px;
+  color: var(--kf-pro-ink);
+  text-decoration: none;
+  box-shadow: 0 12px 30px rgba(12, 58, 79, 0.06);
+}
+
+.service-knowledge-links a:hover {
+  border-color: rgba(15, 158, 205, 0.42);
+  transform: translateY(-2px);
+}
+
+.service-knowledge-links a strong {
+  color: var(--kf-pro-blue);
+  font-size: 1.08rem;
+  line-height: 1.5;
+}
+
+.service-knowledge-links a span {
+  color: var(--kf-pro-muted);
+  font-size: 0.94rem;
+  line-height: 1.75;
+}
+
 .service-summary-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -3586,7 +3625,8 @@ footer.bg-white a:hover {
 
   .service-disclosure,
   .service-disclosure__cards,
-  .service-situation-grid {
+  .service-situation-grid,
+  .service-knowledge-links > div:last-child {
     grid-template-columns: 1fr;
   }
 

@@ -155,6 +155,23 @@ export default async function ServicePage({ params }: PageProps) {
             </div>
           </section>
 
+          {"knowledgeLinks" in service && service.knowledgeLinks?.length ? (
+            <section className="service-knowledge-links">
+              <div className="service-section-heading">
+                <p>Knowledge</p>
+                <h2>{service.title}知識整理</h2>
+              </div>
+              <div>
+                {service.knowledgeLinks.map((item) => (
+                  <Link href={item.href} key={item.href}>
+                    <strong>{item.title}</strong>
+                    <span>{item.description}</span>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          ) : null}
+
           <div className="legacy-service-cta">
             <h2>想了解{service.title}是否適合？</h2>
             <p>請先來電或留下資料，國豐當舖會依您的實際條件說明可評估方向。實際額度、利息、費用與結果以現場評估及契約為準。</p>
