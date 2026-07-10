@@ -3143,6 +3143,13 @@ footer.bg-white a:hover {
   line-height: 1.5;
 }
 
+.knowledge-related a p {
+  margin: 0;
+  color: var(--kf-pro-muted);
+  font-size: 0.94rem;
+  line-height: 1.7;
+}
+
 .knowledge-cta {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 220px;

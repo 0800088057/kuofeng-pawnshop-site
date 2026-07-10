@@ -170,6 +170,21 @@ export default async function KnowledgeArticlePage({ params }: PageProps) {
             </ul>
           </section>
 
+          {article.relatedLinks?.length ? (
+            <section className="knowledge-related">
+              <h2>相關服務</h2>
+              <div>
+                {article.relatedLinks.map((related) => (
+                  <Link href={related.href} key={related.href}>
+                    <span>服務說明</span>
+                    <strong>{related.title}</strong>
+                    <p>{related.description}</p>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          ) : null}
+
           {relatedArticles.length > 0 ? (
             <section className="knowledge-related">
               <h2>延伸閱讀</h2>
