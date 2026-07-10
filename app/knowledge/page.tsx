@@ -38,10 +38,6 @@ export default function KnowledgePage() {
           <strong>{categories.length}</strong>
           <span>個主題分類</span>
         </article>
-        <article>
-          <strong>GEO</strong>
-          <span>以北部服務情境規劃長尾內容</span>
-        </article>
       </section>
 
       <section className="legacy-page-width knowledge-topic-strip" aria-label="文章分類">

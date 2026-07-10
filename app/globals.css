@@ -2437,12 +2437,11 @@ footer.bg-white a:hover {
 }
 
 .modern-hero__visual {
-  border: 1px solid rgba(255, 255, 255, 0.72);
-  border-radius: 34px;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.84), rgba(255, 255, 255, 0.22)),
-    radial-gradient(circle at 48% 24%, rgba(242, 184, 75, 0.22), transparent 42%);
-  box-shadow: 0 30px 70px rgba(12, 58, 79, 0.17);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
 }
 
 .modern-section-head h2,
@@ -3000,7 +2999,7 @@ footer.bg-white a:hover {
 
 .knowledge-index-summary {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
   margin-top: -44px;
   position: relative;
