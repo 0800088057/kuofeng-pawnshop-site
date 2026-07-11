@@ -3,12 +3,14 @@
 import { FormEvent, useState } from "react";
 import { services } from "@/data/services";
 import { contactFormSchema } from "@/lib/validation";
+import { trackEvent } from "@/components/Analytics";
 
 type FormState = {
   name: string;
   phone: string;
   service: string;
   message: string;
+  consent: boolean;
   website: string;
 };
 
@@ -17,6 +19,7 @@ const initialState: FormState = {
   phone: "",
   service: "",
   message: "",
+  consent: false,
   website: "",
 };
 
@@ -25,7 +28,7 @@ export function ContactForm() {
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
   const [status, setStatus] = useState("");
 
-  function update(field: keyof FormState, value: string) {
+  function update<K extends keyof FormState>(field: K, value: FormState[K]) {
     setForm((current) => ({ ...current, [field]: value }));
     setErrors((current) => ({ ...current, [field]: undefined }));
   }
@@ -54,6 +57,7 @@ export function ContactForm() {
       }
 
       setStatus(result.message || "已收到您的諮詢資料。");
+      trackEvent("generate_lead", { form_name: "contact_form", service: form.service || "unspecified" });
       setForm(initialState);
     } catch {
       setStatus("目前無法送出表單，請改用電話或 LINE 聯絡。");
@@ -84,6 +88,20 @@ export function ContactForm() {
         備註
         <textarea value={form.message} onChange={(event) => update("message", event.target.value)} rows={5} className="rounded-2xl border-2 border-brand-blue/40 px-4 py-3 text-base outline-none focus:border-brand-blue" placeholder="可簡述需求、方便聯絡時間或物件狀況" />
         {errors.message ? <span className="text-sm text-red-600">{errors.message}</span> : null}
+      </label>
+      <label className="grid gap-2 text-sm font-bold leading-6 text-slate-700">
+        <span className="flex items-start gap-3">
+          <input
+            type="checkbox"
+            checked={form.consent}
+            onChange={(event) => update("consent", event.target.checked)}
+            className="mt-1 h-4 w-4 shrink-0 accent-brand-blue"
+          />
+          <span>
+            我已閱讀並同意<a href="/privacy" className="mx-1 text-brand-blue underline underline-offset-2">隱私權與個資蒐集告知</a>，同意國豐當舖為回覆本次諮詢而處理所填資料。
+          </span>
+        </span>
+        {errors.consent ? <span className="text-sm text-red-600">{errors.consent}</span> : null}
       </label>
       <button type="submit" className="rounded-full bg-brand-yellow px-6 py-3 text-base font-black text-brand-dark comic-border">
         送出諮詢資料

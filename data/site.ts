@@ -7,7 +7,7 @@ export const siteConfig = {
   openingHours: "週一至週五 09:00-18:00",
   description:
     "國豐當舖位於台北市大同區，提供汽機車借款、房屋二胎、支票貼現、工商融資與代償諮詢等服務，條件依現場評估與契約為準。",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://kuofeng.com.tw",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://www.kuofeng.com.tw",
   lineId: "@469tdmze",
   lineUrl: process.env.LINE_URL || "https://lin.ee/SZxUigN",
   lineQrImage: "/assets/ui/line-qr-gw.png",

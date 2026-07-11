@@ -65,6 +65,7 @@ export function Footer() {
               {item.label}
             </Link>
           ))}
+          <Link href="/privacy" className="hover:text-yellow-100">隱私權</Link>
         </nav>
       </div>
     </footer>

@@ -22,6 +22,7 @@ export async function generateMetadata({ params }: PageProps) {
     title: service.title,
     description: `${service.title}服務說明：${service.description}`,
     path: `/services/${service.slug}`,
+    image: service.image,
   });
 }
 
@@ -30,9 +31,52 @@ export default async function ServicePage({ params }: PageProps) {
   const service = services.find((item) => item.slug === slug);
   if (!service) notFound();
   const legacy = service.legacy;
+  const serviceUrl = new URL(`/services/${service.slug}`, siteConfig.url).toString();
+  const serviceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: service.title,
+    description: service.description,
+    url: serviceUrl,
+    provider: {
+      "@type": "FinancialService",
+      name: siteConfig.name,
+      telephone: siteConfig.phone,
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "民族西路78號1樓",
+        addressLocality: "大同區",
+        addressRegion: "台北市",
+        addressCountry: "TW",
+      },
+    },
+  };
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: service.faqs.map(([question, answer]) => ({
+      "@type": "Question",
+      name: question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: answer,
+      },
+    })),
+  };
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "首頁", item: siteConfig.url },
+      { "@type": "ListItem", position: 2, name: service.title, item: serviceUrl },
+    ],
+  };
 
   return (
     <div className="legacy-service-page">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <section className="legacy-breadcrumbs">
         <div className="legacy-page-width">
           <nav aria-label="麵包屑">

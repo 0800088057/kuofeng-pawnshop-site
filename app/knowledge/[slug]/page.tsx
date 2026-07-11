@@ -23,6 +23,8 @@ export async function generateMetadata({ params }: PageProps) {
     title: article.title,
     description: article.description,
     path: `/knowledge/${article.slug}`,
+    image: article.cover.src,
+    type: "article",
   });
 }
 
@@ -47,6 +49,10 @@ export default async function KnowledgeArticlePage({ params }: PageProps) {
     publisher: {
       "@type": "Organization",
       name: siteConfig.name,
+      logo: {
+        "@type": "ImageObject",
+        url: new URL("/assets/legacy-web02/i25.png", siteConfig.url).toString(),
+      },
     },
     mainEntityOfPage: new URL(`/knowledge/${article.slug}`, siteConfig.url).toString(),
   };
