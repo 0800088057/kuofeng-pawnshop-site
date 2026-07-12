@@ -1,7 +1,9 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { CheckCircle2, LoaderCircle, MessageCircle, Phone, RotateCcw } from "lucide-react";
 import { services } from "@/data/services";
+import { siteConfig } from "@/data/site";
 import { contactFormSchema } from "@/lib/validation";
 import { trackEvent } from "@/components/Analytics";
 
@@ -26,7 +28,8 @@ const initialState: FormState = {
 export function ContactForm() {
   const [form, setForm] = useState<FormState>(initialState);
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [statusMessage, setStatusMessage] = useState("");
 
   function update<K extends keyof FormState>(field: K, value: FormState[K]) {
     setForm((current) => ({ ...current, [field]: value }));
@@ -35,7 +38,10 @@ export function ContactForm() {
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    setStatus("");
+    if (status === "submitting") return;
+
+    setStatus("idle");
+    setStatusMessage("");
     const parsed = contactFormSchema.safeParse(form);
     if (!parsed.success) {
       const fieldErrors = parsed.error.flatten().fieldErrors;
@@ -44,6 +50,7 @@ export function ContactForm() {
     }
 
     try {
+      setStatus("submitting");
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -52,16 +59,46 @@ export function ContactForm() {
       const result = (await response.json()) as { message?: string };
 
       if (!response.ok) {
-        setStatus(result.message || "送出失敗，請稍後再試。");
+        setStatus("error");
+        setStatusMessage(result.message || "送出失敗，請稍後再試。");
         return;
       }
 
-      setStatus(result.message || "已收到您的諮詢資料。");
+      setStatus("success");
+      setStatusMessage(result.message || "已收到您的諮詢資料。");
       trackEvent("generate_lead", { form_name: "contact_form", service: form.service || "unspecified" });
       setForm(initialState);
     } catch {
-      setStatus("目前無法送出表單，請改用電話或 LINE 聯絡。");
+      setStatus("error");
+      setStatusMessage("目前無法送出表單，請改用電話或 LINE 聯絡。");
     }
+  }
+
+  if (status === "success") {
+    return (
+      <section className="modern-contact-form grid gap-5 rounded-[28px] bg-white p-6 text-center comic-border md:p-8" role="status" aria-live="polite">
+        <CheckCircle2 className="mx-auto h-16 w-16 text-brand-blue" aria-hidden="true" />
+        <div>
+          <p className="text-sm font-black tracking-[0.18em] text-brand-blue">FORM RECEIVED</p>
+          <h2 className="mt-2 text-3xl font-black text-brand-deep">感謝您的諮詢</h2>
+          <p className="mx-auto mt-3 max-w-md text-base font-bold leading-8 text-slate-600">{statusMessage} 國豐當舖會依營業時間回覆；若希望立即確認，歡迎直接來電或加入 LINE。</p>
+        </div>
+        <div className="grid gap-3 sm:grid-cols-2">
+          <a href={`tel:${siteConfig.phone}`} className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-blue px-5 py-3 text-sm font-black text-white">
+            <Phone className="h-5 w-5" />
+            立即來電
+          </a>
+          <a href={siteConfig.lineUrl} className="kf-mobile-line inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-black text-white">
+            <MessageCircle className="h-5 w-5" />
+            LINE 諮詢
+          </a>
+        </div>
+        <button type="button" onClick={() => setStatus("idle")} className="mx-auto inline-flex items-center gap-2 text-sm font-black text-brand-blue underline underline-offset-4">
+          <RotateCcw className="h-4 w-4" />
+          再送一筆諮詢
+        </button>
+      </section>
+    );
   }
 
   return (
@@ -103,13 +140,14 @@ export function ContactForm() {
         </span>
         {errors.consent ? <span className="text-sm text-red-600">{errors.consent}</span> : null}
       </label>
-      <button type="submit" className="rounded-full bg-brand-yellow px-6 py-3 text-base font-black text-brand-dark comic-border">
-        送出諮詢資料
+      <button type="submit" disabled={status === "submitting"} className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-yellow px-6 py-3 text-base font-black text-brand-dark comic-border disabled:cursor-not-allowed disabled:opacity-70">
+        {status === "submitting" ? <LoaderCircle className="h-5 w-5 animate-spin" /> : null}
+        {status === "submitting" ? "資料送出中..." : "送出諮詢資料"}
       </button>
       <p className="modern-contact-form__notice">
         送出後僅作為諮詢聯繫與初步了解使用，不代表承作或借款結果；實際條件以現場評估與契約為準。
       </p>
-      {status ? <p className="rounded-2xl bg-sky-50 p-4 text-sm font-bold leading-7 text-brand-deep">{status}</p> : null}
+      {status === "error" ? <p role="alert" className="rounded-2xl border border-red-200 bg-red-50 p-4 text-sm font-bold leading-7 text-red-700">{statusMessage}</p> : null}
     </form>
   );
 }
