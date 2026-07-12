@@ -2,6 +2,12 @@ import { NextResponse } from "next/server";
 import { contactFormSchema } from "@/lib/validation";
 
 const resendEndpoint = "https://api.resend.com/emails";
+const turnstileEndpoint = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
+
+type TurnstileResult = {
+  success: boolean;
+  action?: string;
+};
 
 export async function POST(request: Request) {
   let payload: unknown;
@@ -20,6 +26,35 @@ export async function POST(request: Request) {
   const data = parsed.data;
   if (data.website) {
     return NextResponse.json({ message: "已收到您的諮詢資料。" });
+  }
+
+  const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+  const turnstileSecret = process.env.TURNSTILE_SECRET_KEY;
+  if (Boolean(turnstileSiteKey) !== Boolean(turnstileSecret)) {
+    return NextResponse.json({ message: "人機驗證尚未設定完成，請改用電話或 LINE 聯絡。" }, { status: 503 });
+  }
+
+  if (turnstileSecret) {
+    if (!data.turnstileToken) {
+      return NextResponse.json({ message: "請先完成安全驗證後再送出。" }, { status: 400 });
+    }
+
+    let verification: TurnstileResult;
+    try {
+      const response = await fetch(turnstileEndpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({ secret: turnstileSecret, response: data.turnstileToken }),
+        signal: AbortSignal.timeout(8_000),
+      });
+      verification = (await response.json()) as TurnstileResult;
+    } catch {
+      return NextResponse.json({ message: "安全驗證暫時無法確認，請稍後再試或改用電話、LINE 聯絡。" }, { status: 502 });
+    }
+
+    if (!verification.success || verification.action !== "contact_form") {
+      return NextResponse.json({ message: "安全驗證已過期或未完成，請重新驗證後再送出。" }, { status: 400 });
+    }
   }
 
   const apiKey = process.env.RESEND_API_KEY;

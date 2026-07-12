@@ -23,9 +23,11 @@ pnpm build
 請參考 `.env.example`。
 
 - `NEXT_PUBLIC_SITE_URL`：正式網址
+- `NEXT_PUBLIC_GA_ID`：GA4 Measurement ID，設定後記錄電話、LINE 與表單成功事件
 - `CONTACT_EMAIL`：聯絡收件信箱
 - `LINE_URL`：LINE 官方帳號連結
 - `FORM_NOTIFICATION_EMAIL`：表單通知信箱，未串接前保留
+- `NEXT_PUBLIC_TURNSTILE_SITE_KEY`、`TURNSTILE_SECRET_KEY`：Cloudflare Turnstile 人機驗證金鑰；兩者都設定後才會強制驗證
 
 ## 資料與素材
 

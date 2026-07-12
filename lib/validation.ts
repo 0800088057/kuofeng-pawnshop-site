@@ -6,5 +6,6 @@ export const contactFormSchema = z.object({
   service: z.string().trim().min(1, "請選擇需求項目"),
   message: z.string().trim().max(500, "備註請勿超過 500 字").optional(),
   consent: z.boolean().refine((value) => value, { message: "請先閱讀並同意個資蒐集告知" }),
+  turnstileToken: z.string().max(2048).optional(),
   website: z.string().max(0).optional(),
 });

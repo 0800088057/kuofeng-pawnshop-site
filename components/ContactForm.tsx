@@ -6,6 +6,7 @@ import { services } from "@/data/services";
 import { siteConfig } from "@/data/site";
 import { contactFormSchema } from "@/lib/validation";
 import { trackEvent } from "@/components/Analytics";
+import { TurnstileWidget } from "@/components/TurnstileWidget";
 
 type FormState = {
   name: string;
@@ -13,6 +14,7 @@ type FormState = {
   service: string;
   message: string;
   consent: boolean;
+  turnstileToken: string;
   website: string;
 };
 
@@ -22,14 +24,18 @@ const initialState: FormState = {
   service: "",
   message: "",
   consent: false,
+  turnstileToken: "",
   website: "",
 };
+
+const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
 export function ContactForm() {
   const [form, setForm] = useState<FormState>(initialState);
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [statusMessage, setStatusMessage] = useState("");
+  const [turnstileResetIndex, setTurnstileResetIndex] = useState(0);
 
   function update<K extends keyof FormState>(field: K, value: FormState[K]) {
     setForm((current) => ({ ...current, [field]: value }));
@@ -42,6 +48,10 @@ export function ContactForm() {
 
     setStatus("idle");
     setStatusMessage("");
+    if (turnstileSiteKey && !form.turnstileToken) {
+      setErrors({ turnstileToken: "請先完成安全驗證" });
+      return;
+    }
     const parsed = contactFormSchema.safeParse(form);
     if (!parsed.success) {
       const fieldErrors = parsed.error.flatten().fieldErrors;
@@ -61,6 +71,8 @@ export function ContactForm() {
       if (!response.ok) {
         setStatus("error");
         setStatusMessage(result.message || "送出失敗，請稍後再試。");
+        setTurnstileResetIndex((current) => current + 1);
+        update("turnstileToken", "");
         return;
       }
 
@@ -140,6 +152,16 @@ export function ContactForm() {
         </span>
         {errors.consent ? <span className="text-sm text-red-600">{errors.consent}</span> : null}
       </label>
+      {turnstileSiteKey ? (
+        <div className="rounded-2xl border border-sky-100 bg-sky-50/60 p-3">
+          <TurnstileWidget
+            siteKey={turnstileSiteKey}
+            resetIndex={turnstileResetIndex}
+            onTokenChange={(token) => update("turnstileToken", token)}
+          />
+          {errors.turnstileToken ? <span className="mt-2 block text-sm font-bold text-red-600">{errors.turnstileToken}</span> : null}
+        </div>
+      ) : null}
       <button type="submit" disabled={status === "submitting"} className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-yellow px-6 py-3 text-base font-black text-brand-dark comic-border disabled:cursor-not-allowed disabled:opacity-70">
         {status === "submitting" ? <LoaderCircle className="h-5 w-5 animate-spin" /> : null}
         {status === "submitting" ? "資料送出中..." : "送出諮詢資料"}
