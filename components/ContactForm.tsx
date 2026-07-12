@@ -91,7 +91,7 @@ export function ContactForm() {
       <section className="modern-contact-form grid gap-5 rounded-[28px] bg-white p-6 text-center comic-border md:p-8" role="status" aria-live="polite">
         <CheckCircle2 className="mx-auto h-16 w-16 text-brand-blue" aria-hidden="true" />
         <div>
-          <p className="text-sm font-black tracking-[0.18em] text-brand-blue">FORM RECEIVED</p>
+          <p className="text-sm font-black tracking-[0.18em] text-brand-blue">已收到資料</p>
           <h2 className="mt-2 text-3xl font-black text-brand-deep">感謝您的諮詢</h2>
           <p className="mx-auto mt-3 max-w-md text-base font-bold leading-8 text-slate-600">{statusMessage} 國豐當舖會依營業時間回覆；若希望立即確認，歡迎直接來電或加入 LINE。</p>
         </div>
