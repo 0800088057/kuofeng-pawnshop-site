@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 import { CheckCircle2, LoaderCircle, MessageCircle, Phone, RotateCcw } from "lucide-react";
 import { services } from "@/data/services";
 import { siteConfig } from "@/data/site";
@@ -36,6 +36,13 @@ export function ContactForm() {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [statusMessage, setStatusMessage] = useState("");
   const [turnstileResetIndex, setTurnstileResetIndex] = useState(0);
+  const hasTrackedFormStart = useRef(false);
+
+  function trackFormStart() {
+    if (hasTrackedFormStart.current) return;
+    hasTrackedFormStart.current = true;
+    trackEvent("form_start", { form_name: "contact_form", page_path: window.location.pathname });
+  }
 
   function update<K extends keyof FormState>(field: K, value: FormState[K]) {
     setForm((current) => ({ ...current, [field]: value }));
@@ -49,12 +56,14 @@ export function ContactForm() {
     setStatus("idle");
     setStatusMessage("");
     if (turnstileSiteKey && !form.turnstileToken) {
+      trackEvent("form_validation_error", { form_name: "contact_form", field_name: "turnstile" });
       setErrors({ turnstileToken: "請先完成安全驗證" });
       return;
     }
     const parsed = contactFormSchema.safeParse(form);
     if (!parsed.success) {
       const fieldErrors = parsed.error.flatten().fieldErrors;
+      trackEvent("form_validation_error", { form_name: "contact_form", field_name: Object.keys(fieldErrors)[0] || "unknown" });
       setErrors(Object.fromEntries(Object.entries(fieldErrors).map(([key, value]) => [key, value?.[0]])) as Partial<Record<keyof FormState, string>>);
       return;
     }
@@ -69,6 +78,7 @@ export function ContactForm() {
       const result = (await response.json()) as { message?: string };
 
       if (!response.ok) {
+        trackEvent("form_submit_error", { form_name: "contact_form", error_type: "server" });
         setStatus("error");
         setStatusMessage(result.message || "送出失敗，請稍後再試。");
         setTurnstileResetIndex((current) => current + 1);
@@ -81,6 +91,7 @@ export function ContactForm() {
       trackEvent("generate_lead", { form_name: "contact_form", service: form.service || "unspecified" });
       setForm(initialState);
     } catch {
+      trackEvent("form_submit_error", { form_name: "contact_form", error_type: "network" });
       setStatus("error");
       setStatusMessage("目前無法送出表單，請改用電話或 LINE 聯絡。");
     }
@@ -114,7 +125,7 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={submit} className="modern-contact-form grid gap-4 rounded-[28px] bg-white p-5 comic-border md:p-7">
+    <form onSubmit={submit} onFocusCapture={trackFormStart} className="modern-contact-form grid gap-4 rounded-[28px] bg-white p-5 comic-border md:p-7">
       <label className="hidden">
         website
         <input value={form.website} onChange={(event) => update("website", event.target.value)} tabIndex={-1} autoComplete="off" />
@@ -158,6 +169,7 @@ export function ContactForm() {
             siteKey={turnstileSiteKey}
             resetIndex={turnstileResetIndex}
             onTokenChange={(token) => update("turnstileToken", token)}
+            onStatusChange={(status) => trackEvent(`turnstile_${status}`, { form_name: "contact_form" })}
           />
           {errors.turnstileToken ? <span className="mt-2 block text-sm font-bold text-red-600">{errors.turnstileToken}</span> : null}
         </div>

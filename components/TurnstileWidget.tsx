@@ -27,12 +27,14 @@ type TurnstileWidgetProps = {
   siteKey: string;
   resetIndex: number;
   onTokenChange: (token: string) => void;
+  onStatusChange?: (status: "success" | "error" | "expired") => void;
 };
 
-export function TurnstileWidget({ siteKey, resetIndex, onTokenChange }: TurnstileWidgetProps) {
+export function TurnstileWidget({ siteKey, resetIndex, onTokenChange, onStatusChange }: TurnstileWidgetProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const widgetIdRef = useRef<string | null>(null);
   const onTokenChangeRef = useRef(onTokenChange);
+  const onStatusChangeRef = useRef(onStatusChange);
   const [isReady, setIsReady] = useState(false);
   const [widgetError, setWidgetError] = useState(false);
 
@@ -45,6 +47,10 @@ export function TurnstileWidget({ siteKey, resetIndex, onTokenChange }: Turnstil
   }, [onTokenChange]);
 
   useEffect(() => {
+    onStatusChangeRef.current = onStatusChange;
+  }, [onStatusChange]);
+
+  useEffect(() => {
     if (!isReady || !window.turnstile || !containerRef.current || widgetIdRef.current) return;
 
     widgetIdRef.current = window.turnstile.render(containerRef.current, {
@@ -54,11 +60,16 @@ export function TurnstileWidget({ siteKey, resetIndex, onTokenChange }: Turnstil
       callback: (token) => {
         setWidgetError(false);
         onTokenChangeRef.current(token);
+        onStatusChangeRef.current?.("success");
       },
-      "expired-callback": () => onTokenChangeRef.current(""),
+      "expired-callback": () => {
+        onTokenChangeRef.current("");
+        onStatusChangeRef.current?.("expired");
+      },
       "error-callback": () => {
         setWidgetError(true);
         onTokenChangeRef.current("");
+        onStatusChangeRef.current?.("error");
       },
     });
 

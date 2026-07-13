@@ -29,6 +29,15 @@ pnpm build
 - `FORM_NOTIFICATION_EMAIL`：表單通知信箱，未串接前保留
 - `NEXT_PUBLIC_TURNSTILE_SITE_KEY`、`TURNSTILE_SECRET_KEY`：Cloudflare Turnstile 人機驗證金鑰；兩者都設定後才會強制驗證
 
+## GA4 轉換事件
+
+- `contact`：點擊電話或 LINE，參數 `contact_method` 可區分 `phone`、`line`。
+- `form_start`：使用者首次開始填寫諮詢表單。
+- `form_validation_error`：前端欄位或安全驗證未完成。
+- `turnstile_success`、`turnstile_error`、`turnstile_expired`：Cloudflare Turnstile 驗證狀態。
+- `form_submit_error`：表單傳送失敗，可區分 `server`、`network`。
+- `generate_lead`：諮詢表單成功送出，建議在 GA4 標記為主要轉換。
+
 ## 資料與素材
 
 主要素材位於：
