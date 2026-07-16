@@ -11,6 +11,7 @@ export type ArticleSection = {
     alt: string;
     width: number;
     height: number;
+    brandFooter?: string;
   };
 };
 
@@ -26,6 +27,7 @@ export type Article = {
     alt: string;
     width: number;
     height: number;
+    brandFooter?: string;
   };
   keywords: string[];
   sections: ArticleSection[];
@@ -61,10 +63,11 @@ export const articles: Article[] = [
     excerpt:
       "汽車借款通常需要準備行照正本、車主本人雙證件，並由車主與車輛到場評估。可討論金額、利息、費用與撥款時間，會依車況、權屬、既有貸款、文件完整度與現場契約為準。",
     cover: {
-      src: "/assets/knowledge/car-loan-documents-hero.png",
+      src: "/assets/knowledge/car-loan-documents-hero.webp",
       alt: "汽車借款需要準備什麼文件，行照、雙證件與車輛到場說明，國豐當舖",
       width: 1200,
       height: 630,
+      brandFooter: "國豐當舖",
     },
     keywords: ["汽車借款需要什麼文件", "汽車借款", "汽車借款文件", "台北汽車借款", "免留車汽車借款"],
     sections: [
@@ -85,10 +88,11 @@ export const articles: Article[] = [
           ],
         },
         image: {
-          src: "/assets/knowledge/car-loan-documents-checklist.png",
+          src: "/assets/knowledge/car-loan-documents-checklist.webp",
           alt: "汽車借款文件清單，行照正本、車主雙證件、車輛到場與既有貸款資訊",
           width: 1000,
           height: 750,
+          brandFooter: "國豐當舖",
         },
       },
       {

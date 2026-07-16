@@ -16,9 +16,25 @@ export function createMetadata({ title, description, path = "/", image = "/asset
   const imageUrl = new URL(image, siteConfig.url).toString();
 
   return {
+    metadataBase: new URL(siteConfig.url),
     title: pageTitle,
     description: pageDescription,
+    applicationName: siteConfig.name,
+    creator: siteConfig.name,
+    publisher: siteConfig.name,
+    category: "金融服務",
     alternates: { canonical: url },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
     openGraph: {
       title: pageTitle,
       description: pageDescription,
@@ -26,7 +42,7 @@ export function createMetadata({ title, description, path = "/", image = "/asset
       siteName: siteConfig.name,
       locale: "zh_TW",
       type,
-      images: [{ url: imageUrl }],
+      images: [{ url: imageUrl, alt: pageTitle }],
     },
     twitter: {
       card: "summary_large_image",

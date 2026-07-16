@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { CheckCircle2, MessageCircle, Phone, ShieldCheck } from "lucide-react";
+import { CheckCircle2, MapPin, MessageCircle, Phone, ShieldCheck } from "lucide-react";
 import { services } from "@/data/services";
-import { siteConfig } from "@/data/site";
+import { northTaiwanServiceAreas, siteConfig } from "@/data/site";
 import { createMetadata } from "@/lib/metadata";
 
 type PageProps = {
@@ -32,22 +32,30 @@ export default async function ServicePage({ params }: PageProps) {
   if (!service) notFound();
   const legacy = service.legacy;
   const serviceUrl = new URL(`/services/${service.slug}`, siteConfig.url).toString();
+  const businessId = `${siteConfig.url}/#business`;
+  const areaServed = service.slug === "second-mortgage"
+    ? [{ "@type": "Country", name: "台灣" }]
+    : northTaiwanServiceAreas.map((name) => ({ "@type": "AdministrativeArea", name }));
+  const areaDescription = service.slug === "second-mortgage"
+    ? "房屋案件可由全台灣屋主先行諮詢，後續依房屋所在地、文件與現場評估安排。"
+    : "服務以台北、新北、基隆、桃園、新竹地區為主，是否適合辦理仍依案件條件與現場評估為準。";
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
     name: service.title,
+    serviceType: service.title,
     description: service.description,
     url: serviceUrl,
-    provider: {
-      "@type": "FinancialService",
-      name: siteConfig.name,
-      telephone: siteConfig.phone,
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: "民族西路78號1樓",
-        addressLocality: "大同區",
-        addressRegion: "台北市",
-        addressCountry: "TW",
+    provider: { "@id": businessId },
+    areaServed,
+    availableChannel: {
+      "@type": "ServiceChannel",
+      serviceUrl,
+      servicePhone: {
+        "@type": "ContactPoint",
+        telephone: siteConfig.phone,
+        contactType: "customer service",
+        availableLanguage: ["zh-TW"],
       },
     },
   };
@@ -119,6 +127,11 @@ export default async function ServicePage({ params }: PageProps) {
                 <CheckCircle2 className="h-6 w-6" />
                 <h3>費用與契約</h3>
                 <p>{service.disclosure.feeNotice}</p>
+              </article>
+              <article>
+                <MapPin className="h-6 w-6" />
+                <h3>服務範圍</h3>
+                <p>{areaDescription}</p>
               </article>
             </div>
           </section>

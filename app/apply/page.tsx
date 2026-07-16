@@ -1,1 +1,5 @@
-export { default, metadata } from "@/app/contact/page";
+import { permanentRedirect } from "next/navigation";
+
+export default function ApplyPage() {
+  permanentRedirect("/contact");
+}

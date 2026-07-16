@@ -88,7 +88,11 @@ export function ContactForm() {
 
       setStatus("success");
       setStatusMessage(result.message || "已收到您的諮詢資料。");
-      trackEvent("generate_lead", { form_name: "contact_form", service: form.service || "unspecified" });
+      trackEvent("generate_lead", {
+        form_name: "contact_form",
+        service: form.service || "unspecified",
+        page_path: window.location.pathname,
+      });
       setForm(initialState);
     } catch {
       trackEvent("form_submit_error", { form_name: "contact_form", error_type: "network" });

@@ -13,6 +13,8 @@ export const siteConfig = {
   lineQrImage: "/assets/ui/line-qr-gw.png",
 };
 
+export const northTaiwanServiceAreas = ["台北市", "新北市", "基隆市", "桃園市", "新竹市", "新竹縣"];
+
 export const navigation = [
   { label: "首頁", href: "/" },
   { label: "房屋二胎", href: "/services/second-mortgage" },

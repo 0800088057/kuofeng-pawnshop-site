@@ -103,7 +103,7 @@ main {
   min-height: 680px;
   background:
     linear-gradient(90deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.08) 48%, rgba(255, 255, 255, 0) 100%),
-    url("/assets/ui/kf-hero-banner.png") center top / cover no-repeat;
+    url("/assets/ui/kf-hero-banner.webp") center top / cover no-repeat;
 }
 
 .modern-hero::after {
@@ -1734,7 +1734,7 @@ main {
 .knowledge-hero {
   background:
     linear-gradient(90deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.82)),
-    url("/assets/ui/kf-hero-banner.png") center / cover no-repeat;
+    url("/assets/ui/kf-hero-banner.webp") center / cover no-repeat;
   padding: 72px 0 70px;
 }
 
@@ -1860,9 +1860,72 @@ main {
 .knowledge-article__cover {
   width: 100%;
   height: auto;
-  margin-top: 28px;
   border-radius: 18px;
   box-shadow: 0 22px 54px rgba(21, 95, 130, 0.14);
+}
+
+.knowledge-article__cover-frame {
+  position: relative;
+  margin-top: 28px;
+  overflow: hidden;
+  border-radius: 18px;
+  box-shadow: 0 22px 54px rgba(21, 95, 130, 0.14);
+}
+
+.knowledge-article__cover-frame .knowledge-article__cover {
+  display: block;
+  margin-top: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.knowledge-article__cover-brand {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: grid;
+  min-height: 13%;
+  place-items: center;
+  background: #073d83;
+  padding: 0.2em 0.16em 0.12em 0.32em;
+  color: #ffffff;
+  font-family: "Noto Serif TC", "PMingLiU", serif;
+  font-size: clamp(1.05rem, 2.7vw, 2.15rem);
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  line-height: 1;
+  text-align: center;
+}
+
+.knowledge-inline-image-frame {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.knowledge-inline-image-frame .knowledge-inline-image {
+  display: block;
+  border-radius: 0;
+}
+
+.knowledge-inline-image-brand {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: grid;
+  min-height: 13%;
+  place-items: center;
+  background: #073d83;
+  padding: 0.2em 0.16em 0.12em 0.32em;
+  color: #ffffff;
+  font-family: "Noto Serif TC", "PMingLiU", serif;
+  font-size: clamp(1.05rem, 2.7vw, 2.15rem);
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  line-height: 1;
+  text-align: center;
 }
 
 .knowledge-article__lead {
@@ -2350,7 +2413,7 @@ footer.bg-white a:hover {
   background:
     linear-gradient(90deg, rgba(255, 255, 255, 0.97) 0%, rgba(255, 255, 255, 0.82) 38%, rgba(255, 255, 255, 0.18) 100%),
     linear-gradient(135deg, rgba(11, 79, 108, 0.12), rgba(47, 174, 210, 0.08)),
-    url("/assets/ui/kf-hero-banner.png") center top / cover no-repeat;
+    url("/assets/ui/kf-hero-banner.webp") center top / cover no-repeat;
 }
 
 .modern-hero::before {
@@ -2557,7 +2620,7 @@ footer.bg-white a:hover {
 .knowledge-hero {
   background:
     linear-gradient(90deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.86)),
-    url("/assets/ui/kf-hero-banner.png") center / cover no-repeat;
+    url("/assets/ui/kf-hero-banner.webp") center / cover no-repeat;
 }
 
 .knowledge-article__lead {
@@ -2653,7 +2716,7 @@ footer.bg-white a:hover {
   inset: 0;
   background:
     linear-gradient(110deg, rgba(255, 255, 255, 0.74), transparent 46%),
-    url("/assets/ui/kf-hero-banner.png") center top / cover no-repeat;
+    url("/assets/ui/kf-hero-banner.webp") center top / cover no-repeat;
   opacity: 0.2;
   pointer-events: none;
 }
@@ -2798,7 +2861,7 @@ footer.bg-white a:hover {
   padding: 78px 0 96px;
   background:
     linear-gradient(90deg, rgba(16, 43, 60, 0.82) 0%, rgba(11, 79, 108, 0.62) 44%, rgba(47, 174, 210, 0.22) 100%),
-    url("/assets/ui/kf-hero-banner.png") center / cover no-repeat;
+    url("/assets/ui/kf-hero-banner.webp") center / cover no-repeat;
 }
 
 .legacy-breadcrumbs::after {
@@ -3320,7 +3383,7 @@ footer.bg-white a:hover {
 
 .service-disclosure__cards {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
 }
 

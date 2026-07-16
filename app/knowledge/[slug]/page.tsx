@@ -33,6 +33,12 @@ export default async function KnowledgeArticlePage({ params }: PageProps) {
   const article = articles.find((item) => item.slug === slug);
   if (!article) notFound();
   const relatedArticles = articles.filter((item) => item.slug !== article.slug && item.category === article.category).slice(0, 3);
+  const relatedLinks = article.relatedLinks?.length
+    ? article.relatedLinks
+    : article.category === "汽車借款"
+      ? [{ title: "汽車借款服務說明", href: "/services/car-loan", description: "查看文件、流程、費用與常見評估情境。" }]
+      : [];
+  const businessId = `${siteConfig.url}/#business`;
 
   const articleSchema = {
     "@context": "https://schema.org",
@@ -40,14 +46,23 @@ export default async function KnowledgeArticlePage({ params }: PageProps) {
     headline: article.title,
     description: article.description,
     image: new URL(article.cover.src, siteConfig.url).toString(),
+    thumbnailUrl: new URL(article.cover.src, siteConfig.url).toString(),
     datePublished: article.date,
     dateModified: article.date,
+    inLanguage: "zh-TW",
+    articleSection: article.category,
+    keywords: article.keywords.join(", "),
+    about: {
+      "@type": "Thing",
+      name: article.category,
+    },
     author: {
       "@type": "Organization",
-      name: siteConfig.name,
+      "@id": businessId,
     },
     publisher: {
       "@type": "Organization",
+      "@id": businessId,
       name: siteConfig.name,
       logo: {
         "@type": "ImageObject",
@@ -112,7 +127,10 @@ export default async function KnowledgeArticlePage({ params }: PageProps) {
         <p className="knowledge-eyebrow">{article.category}</p>
         <h1>{article.title}</h1>
         <time dateTime={article.date}>最後更新：{article.date}</time>
-        <Image className="knowledge-article__cover" src={article.cover.src} alt={article.cover.alt} width={article.cover.width} height={article.cover.height} priority />
+        <div className="knowledge-article__cover-frame">
+          <Image className="knowledge-article__cover" src={article.cover.src} alt={article.cover.alt} width={article.cover.width} height={article.cover.height} priority />
+          {article.cover.brandFooter ? <span className="knowledge-article__cover-brand">{article.cover.brandFooter}</span> : null}
+        </div>
         <div className="knowledge-article__meta">
           <span>主題：{article.category}</span>
           <span>閱讀重點：文件、評估、費用與契約</span>
@@ -168,7 +186,12 @@ export default async function KnowledgeArticlePage({ params }: PageProps) {
                   ))}
                 </ul>
               ) : null}
-              {section.image ? <Image className="knowledge-inline-image" src={section.image.src} alt={section.image.alt} width={section.image.width} height={section.image.height} /> : null}
+              {section.image ? (
+                <div className="knowledge-inline-image-frame">
+                  <Image className="knowledge-inline-image" src={section.image.src} alt={section.image.alt} width={section.image.width} height={section.image.height} />
+                  {section.image.brandFooter ? <span className="knowledge-inline-image-brand">{section.image.brandFooter}</span> : null}
+                </div>
+              ) : null}
             </section>
           ))}
 
@@ -202,11 +225,11 @@ export default async function KnowledgeArticlePage({ params }: PageProps) {
             </ul>
           </section>
 
-          {article.relatedLinks?.length ? (
+          {relatedLinks.length ? (
             <section className="knowledge-related">
               <h2>相關內容</h2>
               <div>
-                {article.relatedLinks.map((related) => (
+                {relatedLinks.map((related) => (
                   <Link href={related.href} key={related.href}>
                     <span>服務說明</span>
                     <strong>{related.title}</strong>
