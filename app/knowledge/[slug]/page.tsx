@@ -2,13 +2,82 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MessageCircle, Phone } from "lucide-react";
-import { articles } from "@/data/articles";
+import { articles, type Article } from "@/data/articles";
 import { siteConfig } from "@/data/site";
 import { createMetadata } from "@/lib/metadata";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
 };
+
+type ArticleContext = {
+  readingFocus: string;
+  serviceScope: string;
+  servicePath?: string;
+  serviceTitle?: string;
+  serviceDescription?: string;
+  ctaEyebrow: string;
+  ctaTitle: string;
+  ctaDescription: string;
+};
+
+const articleContexts: Record<string, ArticleContext> = {
+  汽車借款: {
+    readingFocus: "文件、車況、費用與契約",
+    serviceScope: "台北、新北、基隆、桃園與新竹地區",
+    servicePath: "/services/car-loan",
+    serviceTitle: "汽車借款服務說明",
+    serviceDescription: "查看文件、流程、費用與常見評估情境。",
+    ctaEyebrow: "先確認再辦理",
+    ctaTitle: "想先確認車況與可評估方向？",
+    ctaDescription: "可先準備行照正本、車主雙證件與既有貸款資訊，透過電話或 LINE 說明需求，再由國豐當舖協助確認後續評估方式。",
+  },
+  房屋二胎: {
+    readingFocus: "房屋權屬、既有貸款、文件與費用",
+    serviceScope: "房屋服務可依個案評估全台需求",
+    servicePath: "/services/second-mortgage",
+    serviceTitle: "房屋二胎服務說明",
+    serviceDescription: "查看房屋條件、常見文件、流程與契約提醒。",
+    ctaEyebrow: "先整理房屋資料",
+    ctaTitle: "想先確認房屋條件與可評估方向？",
+    ctaDescription: "可先整理房屋地址、權屬資料、既有房貸餘額與資金用途，透過電話、LINE 或線上表單說明，再由國豐當舖協助確認後續評估方式。",
+  },
+  借款比較: {
+    readingFocus: "申辦條件、費用、速度與適用情境",
+    serviceScope: "依擔保品與服務項目分別評估",
+    ctaEyebrow: "先釐清需求",
+    ctaTitle: "不確定哪一種方式適合？",
+    ctaDescription: "可先說明資金用途、可提供的文件或擔保品，以及預計還款安排，再由國豐當舖協助整理可比較的方向。",
+  },
+  合規提醒: {
+    readingFocus: "合法立案、費用、契約與查證方式",
+    serviceScope: "台灣借款安全與合法當舖查核",
+    ctaEyebrow: "先查證再決定",
+    ctaTitle: "對辦理流程或契約仍有疑問？",
+    ctaDescription: "可先透過電話、LINE 或線上表單提出問題，辦理前應確認業者資料、費用、利息、期限與契約內容。",
+  },
+};
+
+function getArticleContext(article: Article): ArticleContext {
+  const fallback: ArticleContext = {
+    readingFocus: "條件、文件、費用與契約",
+    serviceScope: "依服務項目與個案條件評估",
+    ctaEyebrow: "先確認再辦理",
+    ctaTitle: "想先確認可評估方向？",
+    ctaDescription: "可先透過電話、LINE 或線上表單說明需求與目前條件，再由國豐當舖協助確認需要準備的資料。",
+  };
+  const categoryContext = articleContexts[article.category] ?? fallback;
+
+  return {
+    ...categoryContext,
+    readingFocus: article.readingFocus ?? categoryContext.readingFocus,
+    serviceScope: article.serviceScope ?? categoryContext.serviceScope,
+    servicePath: article.servicePath ?? categoryContext.servicePath,
+    ctaEyebrow: article.cta?.eyebrow ?? categoryContext.ctaEyebrow,
+    ctaTitle: article.cta?.title ?? categoryContext.ctaTitle,
+    ctaDescription: article.cta?.description ?? categoryContext.ctaDescription,
+  };
+}
 
 export function generateStaticParams() {
   return articles.map((article) => ({ slug: article.slug }));
@@ -32,13 +101,22 @@ export default async function KnowledgeArticlePage({ params }: PageProps) {
   const { slug } = await params;
   const article = articles.find((item) => item.slug === slug);
   if (!article) notFound();
-  const relatedArticles = articles.filter((item) => item.slug !== article.slug && item.category === article.category).slice(0, 3);
+  const context = getArticleContext(article);
+  const curatedRelatedArticles = (article.relatedArticleSlugs ?? [])
+    .map((relatedSlug) => articles.find((item) => item.slug === relatedSlug))
+    .filter((item): item is Article => item !== undefined);
+  const relatedArticles = curatedRelatedArticles.length
+    ? curatedRelatedArticles.slice(0, 3)
+    : articles.filter((item) => item.slug !== article.slug && item.category === article.category).slice(0, 3);
   const relatedLinks = article.relatedLinks?.length
     ? article.relatedLinks
-    : article.category === "汽車借款"
-      ? [{ title: "汽車借款服務說明", href: "/services/car-loan", description: "查看文件、流程、費用與常見評估情境。" }]
+    : context.servicePath && context.serviceTitle && context.serviceDescription
+      ? [{ title: context.serviceTitle, href: context.servicePath, description: context.serviceDescription }]
       : [];
   const businessId = `${siteConfig.url}/#business`;
+  const websiteId = `${siteConfig.url}/#website`;
+  const articleUrl = new URL(`/knowledge/${article.slug}`, siteConfig.url).toString();
+  const modifiedDate = article.updatedDate ?? article.date;
 
   const articleSchema = {
     "@context": "https://schema.org",
@@ -48,10 +126,15 @@ export default async function KnowledgeArticlePage({ params }: PageProps) {
     image: new URL(article.cover.src, siteConfig.url).toString(),
     thumbnailUrl: new URL(article.cover.src, siteConfig.url).toString(),
     datePublished: article.date,
-    dateModified: article.date,
+    dateModified: modifiedDate,
     inLanguage: "zh-TW",
     articleSection: article.category,
     keywords: article.keywords.join(", "),
+    isPartOf: {
+      "@type": "WebSite",
+      "@id": websiteId,
+    },
+    citation: article.references.map((reference) => reference.href),
     about: {
       "@type": "Thing",
       name: article.category,
@@ -59,6 +142,7 @@ export default async function KnowledgeArticlePage({ params }: PageProps) {
     author: {
       "@type": "Organization",
       "@id": businessId,
+      name: siteConfig.name,
     },
     publisher: {
       "@type": "Organization",
@@ -69,7 +153,10 @@ export default async function KnowledgeArticlePage({ params }: PageProps) {
         url: new URL("/assets/legacy-web02/i25.png", siteConfig.url).toString(),
       },
     },
-    mainEntityOfPage: new URL(`/knowledge/${article.slug}`, siteConfig.url).toString(),
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": articleUrl,
+    },
   };
 
   const faqSchema = {
@@ -126,15 +213,20 @@ export default async function KnowledgeArticlePage({ params }: PageProps) {
         </nav>
         <p className="knowledge-eyebrow">{article.category}</p>
         <h1>{article.title}</h1>
-        <time dateTime={article.date}>最後更新：{article.date}</time>
+        <div className="knowledge-article__dates">
+          <time dateTime={article.date}>發布日期：{article.date}</time>
+          {article.updatedDate ? <time dateTime={article.updatedDate}>最後更新：{article.updatedDate}</time> : null}
+          {article.reviewedDate ? <span>內容檢視：{article.reviewedDate}</span> : null}
+        </div>
         <div className="knowledge-article__cover-frame">
           <Image className="knowledge-article__cover" src={article.cover.src} alt={article.cover.alt} width={article.cover.width} height={article.cover.height} priority />
           {article.cover.brandFooter ? <span className="knowledge-article__cover-brand">{article.cover.brandFooter}</span> : null}
         </div>
         <div className="knowledge-article__meta">
           <span>主題：{article.category}</span>
-          <span>閱讀重點：文件、評估、費用與契約</span>
-          <span>內容定位：北部當舖諮詢情境</span>
+          <span>閱讀重點：{context.readingFocus}</span>
+          <span>服務範圍：{context.serviceScope}</span>
+          <span>內容整理：{siteConfig.name}</span>
         </div>
         <p className="knowledge-article__lead">{article.excerpt}</p>
       </header>
@@ -256,9 +348,9 @@ export default async function KnowledgeArticlePage({ params }: PageProps) {
 
           <section className="knowledge-cta">
             <div>
-              <p className="knowledge-cta__eyebrow">Need help?</p>
-              <h2>想先確認是否適合評估？</h2>
-              <p>可先準備行照、雙證件或相關資料，透過電話或 LINE 說明車況與需求，由國豐當舖協助確認可評估方向。</p>
+              <p className="knowledge-cta__eyebrow">{context.ctaEyebrow}</p>
+              <h2>{context.ctaTitle}</h2>
+              <p>{context.ctaDescription}</p>
               <div className="knowledge-cta__actions">
                 <a href={`tel:${siteConfig.phone}`}>
                   <Phone className="h-5 w-5" />

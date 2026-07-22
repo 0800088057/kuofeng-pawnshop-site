@@ -3152,6 +3152,21 @@ footer.bg-white a:hover {
   margin-top: 18px;
 }
 
+.knowledge-article__dates {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin-top: 18px;
+  color: #7b8b92;
+  font-weight: 700;
+}
+
+.knowledge-article__dates time,
+.knowledge-article__dates span {
+  display: inline;
+  margin: 0;
+}
+
 .knowledge-article__meta span {
   border: 1px solid rgba(11, 79, 108, 0.12);
   border-radius: 999px;

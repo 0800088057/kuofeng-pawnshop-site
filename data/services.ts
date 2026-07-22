@@ -74,6 +74,21 @@ export const services = [
         href: "/knowledge/car-loan-documents",
         description: "查看行照正本、車主雙證件與車輛到場等正式辦理要求。",
       },
+      {
+        title: "車子還有貸款可以借款嗎？",
+        href: "/knowledge/car-loan-existing-loan",
+        description: "了解剩餘貸款、車況、市場車價與可評估空間之間的關係。",
+      },
+      {
+        title: "汽車借款免留車是什麼？",
+        href: "/knowledge/car-loan-keep-car",
+        description: "整理免留車常見條件、使用安排與簽約前應確認事項。",
+      },
+      {
+        title: "汽車借款會查聯徵嗎？",
+        href: "/knowledge/car-loan-credit-check",
+        description: "說明聯徵、信用條件與當舖現場評估的差異。",
+      },
     ],
     legacy: {
       subtitle: "車況、權屬與文件條件評估",
@@ -153,6 +168,13 @@ export const services = [
       ["房屋還有貸款可以做二胎嗎？", "可以先評估。實際可討論方向需依房屋價值、既有貸款餘額、產權狀況與契約條件判斷。"],
       ["不是台北房屋可以詢問嗎？", "房屋案件可先提供地址與產權狀況，由門市初步確認是否適合進一步評估。"],
       ["房屋二胎一定要提供權狀嗎？", "正式評估通常需要權狀與貸款餘額等資料，實際文件依個案條件確認。"],
+    ],
+    knowledgeLinks: [
+      {
+        title: "房屋二胎需要準備什麼文件？",
+        href: "/knowledge/second-mortgage-documents",
+        description: "分清初步諮詢與正式抵押權設定文件，並了解權狀、謄本、既有房貸與順位重點。",
+      },
     ],
     legacy: {
       subtitle: "輕鬆借簡單還，讓您安心貸超放心",

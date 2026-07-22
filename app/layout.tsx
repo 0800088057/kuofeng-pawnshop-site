@@ -28,10 +28,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         "@id": businessId,
         name: siteConfig.name,
         url: siteConfig.url,
-        image: new URL("/assets/ui/kf-hero-banner.png", siteConfig.url).toString(),
+        image: new URL("/assets/ui/kf-hero-banner.webp", siteConfig.url).toString(),
         logo: new URL("/assets/legacy-web02/i25.png", siteConfig.url).toString(),
         telephone: siteConfig.phone,
         taxID: siteConfig.taxId,
+        sameAs: [siteConfig.lineUrl],
         address: {
           "@type": "PostalAddress",
           streetAddress: "民族西路78號1樓",

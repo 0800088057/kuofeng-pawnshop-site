@@ -66,6 +66,7 @@ export function Footer() {
             </Link>
           ))}
           <Link href="/privacy" className="hover:text-yellow-100">隱私權</Link>
+          <Link href="/editorial-policy" className="hover:text-yellow-100">內容查核原則</Link>
         </nav>
       </div>
     </footer>

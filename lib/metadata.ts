@@ -9,7 +9,7 @@ type MetadataInput = {
   type?: "website" | "article";
 };
 
-export function createMetadata({ title, description, path = "/", image = "/assets/ui/kf-hero-banner.png", type = "website" }: MetadataInput = {}): Metadata {
+export function createMetadata({ title, description, path = "/", image = "/assets/ui/kf-hero-banner.webp", type = "website" }: MetadataInput = {}): Metadata {
   const pageTitle = title ? `${title}｜${siteConfig.name}` : `${siteConfig.name}｜台北大同區合法當舖`;
   const pageDescription = description || siteConfig.description;
   const url = new URL(path, siteConfig.url).toString();
